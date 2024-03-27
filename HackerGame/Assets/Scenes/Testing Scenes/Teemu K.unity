@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 634617146}
   - component: {fileID: 634617145}
   m_Layer: 5
-  m_Name: EECodeBlocks_Bg (1)
+  m_Name: EECodeBlocks_Bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
