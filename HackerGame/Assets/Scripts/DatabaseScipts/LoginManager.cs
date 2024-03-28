@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,7 +30,7 @@ public class LoginManager : MonoBehaviour
         else print("Failed to Register User!");
     }
 
-        public async void OnLoginPressed()
+    public async void OnLoginPressed()
     {
         if(string.IsNullOrWhiteSpace(Log_Email.text))
         {
@@ -43,8 +44,15 @@ public class LoginManager : MonoBehaviour
             return;
         }
 
-        (bool success, string username) = await MySqlManager.LoginUser(Reg_Email.text, Reg_Password.text);
-        if(success) print("Successfully Logged in User: " + username +"" );       
-        else print("Failed to Log in User!");
+        (bool success, string username) = await MySqlManager.LoginUser(Log_Email.text, Log_Password.text);
+        if(success) 
+        {
+            print("Successfully Logged in User: " + username + " ");       
+        }
+        else 
+        {
+            print("Failed to Log in User!");
+        }
     }
-}
+}    
+

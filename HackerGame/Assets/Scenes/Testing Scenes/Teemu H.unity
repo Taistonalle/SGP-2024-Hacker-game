@@ -3857,7 +3857,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: 250}
+  m_AnchoredPosition: {x: -1, y: 250}
   m_SizeDelta: {x: 1000, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2124260815
@@ -3880,13 +3880,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'NOW YOU NEED DATABASE LIKE THIS TO MAKE THIS WORK:
+  m_text: 'YOU NEED DATABASE LIKE THIS TO MAKE THIS WORK:
+
+    (DB mysqlyoutube and
+    user table with Email,Username,Password.)
 
 
 
-
-    AND .PHP SCRIPTS
-    NEED TO BE IN: C:\MAMP\htdocs\mysqlyoutube
+    AND .PHP SCRIPTS NEED TO BE
+    IN: C:\MAMP\htdocs\mysqlyoutube
 
 '
   m_isRightToLeft: 0
@@ -3915,8 +3917,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
