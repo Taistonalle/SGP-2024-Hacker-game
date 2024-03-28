@@ -44,7 +44,7 @@ public class LoginManager : MonoBehaviour
         }
 
         (bool success, string username) = await MySqlManager.LoginUser(Reg_Email.text, Reg_Password.text);
-        if(success) print("Successfully Logged in User: " + username);       
+        if(success) print("Successfully Logged in User: " + username +"" );       
         else print("Failed to Log in User!");
     }
 }
