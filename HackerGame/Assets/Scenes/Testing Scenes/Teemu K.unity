@@ -364,6 +364,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Proto_EE
       objectReference: {fileID: 0}
+    - target: {fileID: 1953991275904750595, guid: ba174aacd6e3d104380c04823240ffb5,
+        type: 3}
+      propertyPath: m_FillCenter
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953991275904750595, guid: ba174aacd6e3d104380c04823240ffb5,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3783326597354661457, guid: ba174aacd6e3d104380c04823240ffb5,
+        type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3783326597354661457, guid: ba174aacd6e3d104380c04823240ffb5,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8816441677965107522, guid: ba174aacd6e3d104380c04823240ffb5,
         type: 3}
       propertyPath: m_LocalPosition.x
