@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 
 public static class MySqlManager
 {
-    public static readonly string SERVER_URL = "http://localhost:80/mysqlyoutube";
+    public static readonly string SERVER_URL = "http://44.211.154.174/mysqlyoutube";
 
     public static async Task<bool> RegisterUser(string email, string password, string username)
     {
