@@ -10,6 +10,7 @@ public class DragUIElement : MonoBehaviour, IDragHandler, IEndDragHandler {
 
       If you want to drag UI elements Inherit this script to other scripts :)
      */
+
     public void OnDrag(PointerEventData eventData) {
         transform.position = Input.mousePosition;
     }

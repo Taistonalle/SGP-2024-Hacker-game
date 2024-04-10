@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class CodeBlock_EE : DragUIElement {
     
-    [SerializeField] GameObject[] possibleSlots;
+    [SerializeField] protected GameObject[] possibleSlots;
    /*
     [SerializeField] private int id;
     public int Id {
@@ -14,41 +14,47 @@ public class CodeBlock_EE : DragUIElement {
         set { id = value; }
     }
    */
-    [SerializeField] float xPosTreshold, yPosTreshold;
+    [SerializeField] protected float xPosTreshold, yPosTreshold;
     Vector2 startingPos;
 
     void Start() {
-        startingPos = transform.position;
+        SetStartPos();
     }
     public override void OnEndDrag(PointerEventData eventData) {
         CheckPosition();
     }
 
-    void CheckPosition() {
+    public virtual void CheckPosition() {
         bool slotFound = false;
         Debug.Log($"Checking if drag ended over possible slot");
         for (int i = 0; i < possibleSlots.Length; i++) {
             if (transform.position.x < possibleSlots[i].transform.position.x - xPosTreshold || transform.position.y < possibleSlots[i].transform.position.y - yPosTreshold) {
+                /*
                 Debug.Log($"Current position on x: {transform.position.x} and slot position x for {possibleSlots[i].name} {possibleSlots[i].transform.position.x}" +
                     $"\nCurrent position on y: {transform.position.y} and slot position y for {possibleSlots[i].name} {possibleSlots[i].transform.position.y}" +
                     $"\nX or Y positions are still less!");
-
+                */
             }
             else if (transform.position.x > possibleSlots[i].transform.position.x + xPosTreshold || transform.position.y > possibleSlots[i].transform.position.y + yPosTreshold) {
+                /*
                 Debug.Log($"Current position on x: {transform.position.x} and slot position x for {possibleSlots[i].name} {possibleSlots[i].transform.position.x}" +
                   $"\nCurrent position on y: {transform.position.y} and slot position y for {possibleSlots[i].name} {possibleSlots[i].transform.position.y}" +
                   $"\nX or Y positions are still too much!");
-
+                */
             }
             else if (transform.position.x < possibleSlots[i].transform.position.x - xPosTreshold || transform.position.y > possibleSlots[i].transform.position.y + yPosTreshold) {
+                /*
                 Debug.Log($"Current position on x: {transform.position.x} and slot position x for {possibleSlots[i].name} {possibleSlots[i].transform.position.x}" +
                   $"\nCurrent position on y: {transform.position.y} and slot position y for {possibleSlots[i].name} {possibleSlots[i].transform.position.y}" +
                   $"\nX pos still too less or Y too much!");
+                */
             }
             else if (transform.position.x > possibleSlots[i].transform.position.x + xPosTreshold || transform.position.y < possibleSlots[i].transform.position.y - yPosTreshold) {
+                /*
                 Debug.Log($"Current position on x: {transform.position.x} and slot position x for {possibleSlots[i].name} {possibleSlots[i].transform.position.x}" +
                   $"\nCurrent position on y: {transform.position.y} and slot position y for {possibleSlots[i].name} {possibleSlots[i].transform.position.y}" +
                   $"\nX pos still too much or Y too less!");
+                */
             }
             else {
                 LockBlockPos(i);
@@ -66,8 +72,11 @@ public class CodeBlock_EE : DragUIElement {
         Debug.Log($"Reseting {gameObject.name} to original space");
         transform.position = startingPos;
     }
+    public void SetStartPos() {
+        startingPos = transform.position;
+    }
 
-    void LockBlockPos(int slot) {
+    public void LockBlockPos(int slot) {
         Debug.Log($"{gameObject.name} is close enough for to lock in {possibleSlots[slot]}");
         transform.position = possibleSlots[slot].transform.position;
     }
