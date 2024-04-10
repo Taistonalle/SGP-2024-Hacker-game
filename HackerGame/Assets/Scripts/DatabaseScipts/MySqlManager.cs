@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Threading.Tasks;
 using UnityEngine.Networking;
 
-static class MySqlManager
+public static class MySqlManager
 {
     public static readonly string SERVER_URL = "http://localhost:80/mysqlyoutube";
 
@@ -20,7 +20,7 @@ static class MySqlManager
         .success;
     }
     
-    public static async Task<(bool success, string username) > LoginUser(string email, string password)
+    public static async Task<(bool success, string username)> LoginUser(string email, string password)
     {
         string LOGIN_USER_URL = $"{SERVER_URL}/Login.php";
         return await SendPostRequest(LOGIN_USER_URL, new Dictionary<string, string>()
@@ -28,6 +28,25 @@ static class MySqlManager
             {"email", email},
             {"password", password}
         });
+    }
+
+    public static async Task<AccountInfo> GetAccountInfoByEmail(string email)
+    {
+        string GET_USER_BY_EMAIL_URL = $"{SERVER_URL}/GetUserByEmail.php";
+        var response = await SendPostRequest(GET_USER_BY_EMAIL_URL, new Dictionary<string, string>()
+        {
+            {"email", email}
+        });
+        if (response.success)
+        {
+            // Splitting the returned string to get username and email
+            string[] parts = response.returnMessage.Split('|');
+            if (parts.Length == 2)
+            {
+                return new AccountInfo(parts[0], parts[1]);
+            }
+        }
+        return null;
     }
 
     static async Task<(bool success, string returnMessage)> SendPostRequest(string url, Dictionary<string, string> data)
@@ -56,9 +75,14 @@ static class MySqlManager
     static bool HasErrorMessage(string msg) => int.TryParse(msg, out var res);
 }
 
-public class DatabaseUser
+public class AccountInfo
 {
-    public string Email;
-    public string Username;
-    public string Password;
+    public string username;
+    public string email;
+
+    public AccountInfo(string _username, string _email)
+    {
+        username = _username;
+        email = _email;
+    }
 }
