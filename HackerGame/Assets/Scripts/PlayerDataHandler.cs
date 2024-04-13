@@ -15,16 +15,17 @@ public class PlayerDataHandler : MonoBehaviour {
     public class PlayerData {
         public string email;
         public string userName;
-        public bool beatEA; //Example what task could be, in this case EA = Easy Abstraction
-            
+        public bool beatEA; //Example what task could be, in this case EA = Easy Abstraction       
     }
 
     //Data seen from the Unity inspector
-    [SerializeField] PlayerData currentPlayerData;
+    // I changed this from private to public because protection level -teemu h
+    //"Assets\Scripts\DatabaseScipts\LoginManager.cs(66,31): error CS0122: 'PlayerDataHandler.currentPlayerData' is inaccessible due to its protection level"
+    [SerializeField] public PlayerData currentPlayerData;
 
     void Start() {
         //SaveData();
-        LoadData();
+        //LoadData();
     }
 
 
