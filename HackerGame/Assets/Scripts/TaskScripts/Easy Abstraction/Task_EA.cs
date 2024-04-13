@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Task_EA : Task_EE {
-    
+    //Everything is inherited from Task_EE
+
+
+    /* Old Override for demo purpose
     public override IEnumerator TerminalMessage(string message, bool correct) {
         //Store old message
         string oldMessage = terminalTxt.text;
@@ -31,5 +34,5 @@ public class Task_EA : Task_EE {
             break;
         }
     }
-    
+    */
 }

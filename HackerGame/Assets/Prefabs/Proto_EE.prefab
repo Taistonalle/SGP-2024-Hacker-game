@@ -331,6 +331,8 @@ MonoBehaviour:
   messageTimeOnTerminal: 3
   correctMessage: Correct! Well done! Unhacking new folder...
   wrongMessage: Incorrect! Try again.
+  correctAmount: 0
+  attempt: 1
 --- !u!1 &1436984984725021631
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,6 +344,8 @@ GameObject:
   - component: {fileID: 6733803142545863298}
   - component: {fileID: 8079577583858646945}
   - component: {fileID: 728537758409155608}
+  - component: {fileID: 284227058486078734}
+  - component: {fileID: 939684550685007277}
   m_Layer: 5
   m_Name: Slot_EE_get
   m_TagString: Untagged
@@ -406,6 +410,64 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!61 &284227058486078734
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436984984725021631}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 30, y: 20}
+  m_EdgeRadius: 0
+--- !u!114 &939684550685007277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436984984725021631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d4aa0e92aa40434bbb52eef7d44bfed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 1
 --- !u!1 &1580076568411089290
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,8 +800,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   possibleSlots:
   - {fileID: 3415664688637212800}
-  xPosTreshold: 15
-  yPosTreshold: 15
+  id: 3
+  minDistanceFromSlot: 0
+  inCorrectSlot: 0
 --- !u!61 &7125069054948416812
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1290,8 +1353,9 @@ MonoBehaviour:
   possibleSlots:
   - {fileID: 1436984984725021631}
   - {fileID: 4923788517960406989}
-  xPosTreshold: 15
-  yPosTreshold: 5
+  id: 1
+  minDistanceFromSlot: 0
+  inCorrectSlot: 0
 --- !u!61 &762460397773221638
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1348,6 +1412,8 @@ GameObject:
   - component: {fileID: 2587350494300383566}
   - component: {fileID: 7659864851210600270}
   - component: {fileID: 8651403056629833128}
+  - component: {fileID: 6592534875182399606}
+  - component: {fileID: 8750741754830743093}
   m_Layer: 5
   m_Name: Slot_EE_return
   m_TagString: Untagged
@@ -1412,6 +1478,64 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!61 &6592534875182399606
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3415664688637212800}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 40, y: 20}
+  m_EdgeRadius: 0
+--- !u!114 &8750741754830743093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3415664688637212800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d4aa0e92aa40434bbb52eef7d44bfed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 3
 --- !u!1 &3429720387893778487
 GameObject:
   m_ObjectHideFlags: 0
@@ -1502,6 +1626,8 @@ GameObject:
   - component: {fileID: 6599368358622943864}
   - component: {fileID: 7465999878072242490}
   - component: {fileID: 6281411375295422810}
+  - component: {fileID: 4811913613557231226}
+  - component: {fileID: 5052039546478470204}
   m_Layer: 5
   m_Name: Slot_EE_Program
   m_TagString: Untagged
@@ -1566,6 +1692,64 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!61 &4811913613557231226
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4156659365872118607}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 60, y: 20}
+  m_EdgeRadius: 0
+--- !u!114 &5052039546478470204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4156659365872118607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d4aa0e92aa40434bbb52eef7d44bfed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
 --- !u!1 &4917258776457980042
 GameObject:
   m_ObjectHideFlags: 0
@@ -1711,6 +1895,8 @@ GameObject:
   - component: {fileID: 3643561780209771852}
   - component: {fileID: 1755706524463675953}
   - component: {fileID: 2168895006396472718}
+  - component: {fileID: 30922473201035162}
+  - component: {fileID: 6998853190381994297}
   m_Layer: 5
   m_Name: Slot_EE_set
   m_TagString: Untagged
@@ -1775,6 +1961,64 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!61 &30922473201035162
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4923788517960406989}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 30, y: 20}
+  m_EdgeRadius: 0
+--- !u!114 &6998853190381994297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4923788517960406989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d4aa0e92aa40434bbb52eef7d44bfed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 2
 --- !u!1 &5217596877087759884
 GameObject:
   m_ObjectHideFlags: 0
@@ -1867,8 +2111,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   possibleSlots:
   - {fileID: 4156659365872118607}
-  xPosTreshold: 15
-  yPosTreshold: 15
+  id: 0
+  minDistanceFromSlot: 0
+  inCorrectSlot: 0
 --- !u!61 &7184035400199306121
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2390,8 +2635,9 @@ MonoBehaviour:
   possibleSlots:
   - {fileID: 4923788517960406989}
   - {fileID: 1436984984725021631}
-  xPosTreshold: 15
-  yPosTreshold: 5
+  id: 2
+  minDistanceFromSlot: 0
+  inCorrectSlot: 0
 --- !u!61 &9124021147557668574
 BoxCollider2D:
   m_ObjectHideFlags: 0
