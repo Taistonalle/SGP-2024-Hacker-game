@@ -2650,8 +2650,10 @@ MonoBehaviour:
   messageTimeOnTerminal: 3
   correctMessage: Correct! Well done! Unhacking new folder...
   wrongMessage: Incorrect! Try again.
-  correctAmount: 0
-  attempt: 1
+  data:
+    attempt: 0
+    correctAmount: 0
+    slotThatWasCorrect: 00000000000000
 --- !u!1 &5976990204165435193
 GameObject:
   m_ObjectHideFlags: 0

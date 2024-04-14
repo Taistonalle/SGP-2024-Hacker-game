@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2303188482398316063}
   - component: {fileID: 1625064974528148877}
   m_Layer: 0
-  m_Name: PlayerDataHandler_LocalTest
+  m_Name: PlayerDataHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,3 +48,5 @@ MonoBehaviour:
     email: 
     userName: 
     beatEA: 0
+    task_EE_data: []
+    correctAttemptAmount_EE: 0

@@ -3,8 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Task_EA : Task_EE {
-    //Everything is inherited from Task_EE
+    //Everything is inherited from Task_EE apart from few overrides related to data
 
+    protected override void UpdateTaskData(bool correctAttempt) {
+        PlayerDataHandler handler = FindObjectOfType<PlayerDataHandler>();
+        Task_Data currentData = data.DataCopy();
+        switch (correctAttempt) {
+            case true:
+            handler.currentPlayerData.task_EA_data.Add(currentData);
+            handler.currentPlayerData.correctAttemptAmount_EA++;
+            break;
+
+            case false:
+            handler.currentPlayerData.task_EA_data.Add(currentData);
+            break;
+        }
+    }
+
+    protected override void GetTaskAttemptData() {
+        PlayerDataHandler handler = FindObjectOfType<PlayerDataHandler>();
+        if (handler.currentPlayerData.task_EA_data.Count == 0) data.attempt = 1;
+        else data.attempt = handler.currentPlayerData.task_EA_data.Count;
+    }
+
+}
 
     /* Old Override for demo purpose
     public override IEnumerator TerminalMessage(string message, bool correct) {
@@ -35,4 +57,4 @@ public class Task_EA : Task_EE {
         }
     }
     */
-}
+

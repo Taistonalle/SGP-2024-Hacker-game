@@ -13,25 +13,28 @@ public class PlayerDataHandler : MonoBehaviour {
 
     [System.Serializable]
     public class PlayerData {
+        [Header("User data")]
         public string email;
         public string userName;
-        public bool beatEA; //Example what task could be, in this case EA = Easy Abstraction       
+
+        [Header("Easy encapsulation data")]
+        public List<Task_Data> task_EE_data = new();
+        public int correctAttemptAmount_EE;
+
+        [Header("Easy Abstraction data")]
+        public List<Task_Data> task_EA_data =new();
+        public int correctAttemptAmount_EA;
     }
 
     //Data seen from the Unity inspector
     // I changed this from private to public because protection level -teemu h
     //"Assets\Scripts\DatabaseScipts\LoginManager.cs(66,31): error CS0122: 'PlayerDataHandler.currentPlayerData' is inaccessible due to its protection level"
-    [SerializeField] public PlayerData currentPlayerData;
+    public PlayerData currentPlayerData;
 
-    void Start() {
-        //SaveData();
-        //LoadData();
-    }
-
-
+    
     //Save from currentPlayerData to json file
     public void SaveData() {
-        string json = JsonUtility.ToJson(currentPlayerData);
+        string json = JsonUtility.ToJson(currentPlayerData, true);
         string path = Path.Combine(Application.persistentDataPath, "currentPlayerData.json");
 
         File.WriteAllText(path, json);
@@ -46,6 +49,15 @@ public class PlayerDataHandler : MonoBehaviour {
 
         currentPlayerData.email = loadedData.email;
         currentPlayerData.userName = loadedData.userName;
-        currentPlayerData.beatEA = loadedData.beatEA;
+
+        //Easy EE
+        currentPlayerData.task_EE_data = loadedData.task_EE_data;
+        currentPlayerData.correctAttemptAmount_EE = loadedData.correctAttemptAmount_EE;
+
+        //Easy EA
+        currentPlayerData.task_EA_data = loadedData.task_EA_data;
+        currentPlayerData.correctAttemptAmount_EA = loadedData.correctAttemptAmount_EA;
+
+        //add more later...
     }
 }
