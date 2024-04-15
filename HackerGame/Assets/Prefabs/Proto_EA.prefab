@@ -135,6 +135,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 5
+  slotData:
+    slotName: GetNameAndAge
+    description: What should console write in this part
+    wasCorrect: 0
 --- !u!1 &388505059014768180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1474,6 +1478,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 2
+  slotData:
+    slotName: public int Age
+    description: Encapsulated accesor name
+    wasCorrect: 0
 --- !u!1 &3688912057431084264
 GameObject:
   m_ObjectHideFlags: 0
@@ -1609,6 +1617,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 1
+  slotData:
+    slotName: public int Id
+    description: Encapsulated accesor name
+    wasCorrect: 0
 --- !u!1 &3701227271431488793
 GameObject:
   m_ObjectHideFlags: 0
@@ -2024,6 +2036,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 4
+  slotData:
+    slotName: 671
+    description: What should console write in this part
+    wasCorrect: 0
 --- !u!1 &4859183399649064144
 GameObject:
   m_ObjectHideFlags: 0
@@ -2439,6 +2455,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
+  slotData:
+    slotName: private int id
+    description: One of the first created variables
+    wasCorrect: 0
 --- !u!1 &5151034613477783365
 GameObject:
   m_ObjectHideFlags: 0
@@ -2653,7 +2673,28 @@ MonoBehaviour:
   data:
     attempt: 0
     correctAmount: 0
-    slotThatWasCorrect: 00000000000000
+    slot_datas:
+    - slotName: 
+      description: 
+      wasCorrect: 0
+    - slotName: 
+      description: 
+      wasCorrect: 0
+    - slotName: 
+      description: 
+      wasCorrect: 0
+    - slotName: 
+      description: 
+      wasCorrect: 0
+    - slotName: 
+      description: 
+      wasCorrect: 0
+    - slotName: 
+      description: 
+      wasCorrect: 0
+    - slotName: 
+      description: 
+      wasCorrect: 0
 --- !u!1 &5976990204165435193
 GameObject:
   m_ObjectHideFlags: 0
@@ -3843,6 +3884,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 6
+  slotData:
+    slotName: 661
+    description: What should console write in this part
+    wasCorrect: 0
 --- !u!1 &7544872855843534288
 GameObject:
   m_ObjectHideFlags: 0
@@ -4201,3 +4246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 3
+  slotData:
+    slotName: CalculateNewId
+    description: Function to calculate new Id
+    wasCorrect: 0

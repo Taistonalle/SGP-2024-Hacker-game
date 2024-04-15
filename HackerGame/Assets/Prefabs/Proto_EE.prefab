@@ -66,8 +66,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "class NameExample\r\n{\r\n    private string name;\r\n    public string
-    Name {\r\n        get { return name; }\r\n        set { name = value; }\r\n   
-    }\r\n}\n\nclass Program {\r\n    static void Main(string[] args) {\r\n       
+    Name {\r\n        get \t{ return\t name; }\r\n        set \t{ name     =   value;
+    }\r\n    }\r\n}\n\nclass Program {\r\n    static void Main(string[] args) {\r\n       
     NameExample tester = new NameExample();\r\n        tester.Name = \"Megamind\";\r\n       
     Console.WriteLine(tester.Name);\r\n    }\r\n}"
   m_isRightToLeft: 0
@@ -334,7 +334,19 @@ MonoBehaviour:
   data:
     attempt: 0
     correctAmount: 0
-    slotThatWasCorrect: 00000000
+    slot_datas:
+    - slotName: 
+      description: 
+      wasCorrect: 0
+    - slotName: 
+      description: 
+      wasCorrect: 0
+    - slotName: 
+      description: 
+      wasCorrect: 0
+    - slotName: 
+      description: 
+      wasCorrect: 0
 --- !u!1 &1436984984725021631
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,7 +384,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -635, y: 220}
-  m_SizeDelta: {x: 30, y: 20}
+  m_SizeDelta: {x: 60, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8079577583858646945
 CanvasRenderer:
@@ -455,7 +467,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 30, y: 20}
+  m_Size: {x: 60, y: 20}
   m_EdgeRadius: 0
 --- !u!114 &939684550685007277
 MonoBehaviour:
@@ -470,6 +482,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 1
+  slotData:
+    slotName: get
+    description: Part of the encapsulation
+    wasCorrect: 0
 --- !u!1 &1580076568411089290
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,7 +764,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -35}
-  m_SizeDelta: {x: 40, y: 20}
+  m_SizeDelta: {x: 60, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5282211006994127403
 CanvasRenderer:
@@ -802,6 +818,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   possibleSlots:
   - {fileID: 3415664688637212800}
+  - {fileID: 4156659365872118607}
+  - {fileID: 1436984984725021631}
+  - {fileID: 4923788517960406989}
   id: 3
   minDistanceFromSlot: 0
   inCorrectSlot: 0
@@ -848,7 +867,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 40, y: 20}
+  m_Size: {x: 60, y: 20}
   m_EdgeRadius: 0
 --- !u!1 &2505925437115376300
 GameObject:
@@ -1300,7 +1319,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 5}
-  m_SizeDelta: {x: 30, y: 20}
+  m_SizeDelta: {x: 60, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1115603545492939065
 CanvasRenderer:
@@ -1355,6 +1374,8 @@ MonoBehaviour:
   possibleSlots:
   - {fileID: 1436984984725021631}
   - {fileID: 4923788517960406989}
+  - {fileID: 4156659365872118607}
+  - {fileID: 3415664688637212800}
   id: 1
   minDistanceFromSlot: 0
   inCorrectSlot: 0
@@ -1401,7 +1422,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 30, y: 20}
+  m_Size: {x: 60, y: 20}
   m_EdgeRadius: 0
 --- !u!1 &3415664688637212800
 GameObject:
@@ -1439,8 +1460,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -593, y: 220}
-  m_SizeDelta: {x: 40, y: 20}
+  m_AnchoredPosition: {x: -561, y: 220}
+  m_SizeDelta: {x: 60, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7659864851210600270
 CanvasRenderer:
@@ -1523,7 +1544,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 40, y: 20}
+  m_Size: {x: 60, y: 20}
   m_EdgeRadius: 0
 --- !u!114 &8750741754830743093
 MonoBehaviour:
@@ -1538,6 +1559,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 3
+  slotData:
+    slotName: return
+    description: Part of the get return name;
+    wasCorrect: 0
 --- !u!1 &3429720387893778487
 GameObject:
   m_ObjectHideFlags: 0
@@ -1752,6 +1777,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
+  slotData:
+    slotName: Program
+    description: Part after class [empry slot]
+    wasCorrect: 0
 --- !u!1 &4917258776457980042
 GameObject:
   m_ObjectHideFlags: 0
@@ -1923,7 +1952,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -635, y: 202}
-  m_SizeDelta: {x: 30, y: 20}
+  m_SizeDelta: {x: 60, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1755706524463675953
 CanvasRenderer:
@@ -2006,7 +2035,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 30, y: 20}
+  m_Size: {x: 60, y: 20}
   m_EdgeRadius: 0
 --- !u!114 &6998853190381994297
 MonoBehaviour:
@@ -2021,6 +2050,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 2
+  slotData:
+    slotName: set
+    description: Part of the encapsulation
+    wasCorrect: 0
 --- !u!1 &5217596877087759884
 GameObject:
   m_ObjectHideFlags: 0
@@ -2113,6 +2146,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   possibleSlots:
   - {fileID: 4156659365872118607}
+  - {fileID: 1436984984725021631}
+  - {fileID: 4923788517960406989}
+  - {fileID: 3415664688637212800}
   id: 0
   minDistanceFromSlot: 0
   inCorrectSlot: 0
@@ -2582,7 +2618,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -15}
-  m_SizeDelta: {x: 30, y: 20}
+  m_SizeDelta: {x: 60, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1096939362258925039
 CanvasRenderer:
@@ -2637,6 +2673,8 @@ MonoBehaviour:
   possibleSlots:
   - {fileID: 4923788517960406989}
   - {fileID: 1436984984725021631}
+  - {fileID: 4156659365872118607}
+  - {fileID: 3415664688637212800}
   id: 2
   minDistanceFromSlot: 0
   inCorrectSlot: 0
@@ -2683,7 +2721,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 30, y: 20}
+  m_Size: {x: 60, y: 20}
   m_EdgeRadius: 0
 --- !u!1 &7791260052703181386
 GameObject:

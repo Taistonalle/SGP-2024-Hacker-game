@@ -632,6 +632,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 3
+  slotData:
+    slotName: void
+    description: Part of static void Main
+    wasCorrect: 0
 --- !u!61 &8924011103205872588
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1185,6 +1189,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
+  slotData:
+    slotName: class
+    description: Word before Animal
+    wasCorrect: 0
 --- !u!61 &6640166757771991608
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1461,6 +1469,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 1
+  slotData:
+    slotName: Animal
+    description: Inherited part
+    wasCorrect: 0
 --- !u!61 &4139967058707388964
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1596,6 +1608,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 2
+  slotData:
+    slotName: new
+    description: Makin new function for MakeSound()
+    wasCorrect: 0
 --- !u!61 &4299190330741983298
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2978,6 +2994,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 4
+  slotData:
+    slotName: myDog
+    description: Dog objects name
+    wasCorrect: 0
 --- !u!61 &8262731175039161999
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3324,5 +3344,22 @@ MonoBehaviour:
   messageTimeOnTerminal: 3
   correctMessage: Correct! Well done! Unhacking new folder...
   wrongMessage: haha incorrect! Try again.
-  correctAmount: 0
-  attempt: 0
+  data:
+    attempt: 0
+    correctAmount: 0
+    slot_datas:
+    - slotName: 
+      description: 
+      wasCorrect: 0
+    - slotName: 
+      description: 
+      wasCorrect: 0
+    - slotName: 
+      description: 
+      wasCorrect: 0
+    - slotName: 
+      description: 
+      wasCorrect: 0
+    - slotName: 
+      description: 
+      wasCorrect: 0

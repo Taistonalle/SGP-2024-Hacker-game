@@ -26,6 +26,13 @@ public class Task_EA : Task_EE {
         else data.attempt = handler.currentPlayerData.task_EA_data.Count;
     }
 
+    protected override void GetSlotDatasInfo() {
+        for (int i = 0; i < slots.Length; ++i) {
+            data.slot_datas[i].slotName = slots[i].GetComponent<Slot_EA>().slotData.slotName;
+            data.slot_datas[i].description = slots[i].GetComponent<Slot_EA>().slotData.description;
+        }
+    }
+
 }
 
     /* Old Override for demo purpose

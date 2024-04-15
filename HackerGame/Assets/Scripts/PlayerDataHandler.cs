@@ -22,8 +22,12 @@ public class PlayerDataHandler : MonoBehaviour {
         public int correctAttemptAmount_EE;
 
         [Header("Easy Abstraction data")]
-        public List<Task_Data> task_EA_data =new();
+        public List<Task_Data> task_EA_data = new();
         public int correctAttemptAmount_EA;
+
+        [Header("Easy Inheritace data")]
+        public List<Task_Data> task_EI_data = new();
+        public int correctAttemptAmount_EI;
     }
 
     //Data seen from the Unity inspector
@@ -57,6 +61,10 @@ public class PlayerDataHandler : MonoBehaviour {
         //Easy EA
         currentPlayerData.task_EA_data = loadedData.task_EA_data;
         currentPlayerData.correctAttemptAmount_EA = loadedData.correctAttemptAmount_EA;
+
+        //Easy EI
+        currentPlayerData.task_EI_data = loadedData.task_EI_data;
+        currentPlayerData.correctAttemptAmount_EI = loadedData.correctAttemptAmount_EI;
 
         //add more later...
     }

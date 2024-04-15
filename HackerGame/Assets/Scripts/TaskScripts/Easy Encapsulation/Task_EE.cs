@@ -8,14 +8,18 @@ using UnityEngine;
 public struct Task_Data {
     public int attempt;
     public int correctAmount;
-    public bool[] slotThatWasCorrect; //Should be same amount as block amount. Adjust from inspector
+    //public bool[] slotThatWasCorrect; //Should be same amount as block amount. Adjust from inspector
+    public Slot_Data[] slot_datas; //Same amount as blocks adjust from inspector
+
     //Deep copy
     public Task_Data DataCopy() {
         Task_Data copy = new Task_Data();
         copy.attempt = attempt;
         copy.correctAmount = correctAmount;
-        copy.slotThatWasCorrect = new bool[slotThatWasCorrect.Length];
-        Array.Copy(slotThatWasCorrect, copy.slotThatWasCorrect, slotThatWasCorrect.Length);
+        //copy.slotThatWasCorrect = new bool[slotThatWasCorrect.Length];
+        //Array.Copy(slotThatWasCorrect, copy.slotThatWasCorrect, slotThatWasCorrect.Length);
+        copy.slot_datas = new Slot_Data[slot_datas.Length];
+        Array.Copy(slot_datas, copy.slot_datas, slot_datas.Length);
         return copy;
     }
 }
@@ -35,6 +39,7 @@ public class Task_EE : MonoBehaviour {
     [SerializeField] protected Task_Data data;
 
     protected void Start() {
+        GetSlotDatasInfo();
         try {
             GetTaskAttemptData();
         }
@@ -64,7 +69,8 @@ public class Task_EE : MonoBehaviour {
         for (int i = 0; i < blocks.Length; i++) {
             if (blocks[i].GetComponent<CodeBlock_EE>().inCorrectSlot) {
                 data.correctAmount++;
-                data.slotThatWasCorrect[i] = true;
+                //data.slotThatWasCorrect[i] = true;
+                data.slot_datas[i].wasCorrect = true;
             }
         }
         if (data.correctAmount == slots.Length) StartCoroutine(TerminalMessage(correctMessage, true));
@@ -77,10 +83,18 @@ public class Task_EE : MonoBehaviour {
     }
 
     protected void ResetAttemptData() {
-        for (int i = 0; i < data.slotThatWasCorrect.Length; i++) data.slotThatWasCorrect[i] = false;
+        //for (int i = 0; i < data.slotThatWasCorrect.Length; i++) data.slotThatWasCorrect[i] = false;
+        for (int i = 0; i < data.slot_datas.Length; i++) data.slot_datas[i].wasCorrect = false;
         for (int i = 0; i < blocks.Length; ++i) blocks[i].GetComponent<CodeBlock_EE>().inCorrectSlot = false;
         data.correctAmount = 0;
         data.attempt++;
+    }
+
+    protected virtual void GetSlotDatasInfo() {
+        for (int i = 0; i < slots.Length; ++i) {
+            data.slot_datas[i].slotName = slots[i].GetComponent<Slot_EE>().slotData.slotName;
+            data.slot_datas[i].description = slots[i].GetComponent<Slot_EE>().slotData.description;
+        }
     }
 
     protected virtual void GetTaskAttemptData() {
