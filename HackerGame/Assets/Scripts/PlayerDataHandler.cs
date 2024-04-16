@@ -17,17 +17,39 @@ public class PlayerDataHandler : MonoBehaviour {
         public string email;
         public string userName;
 
-        [Header("Easy encapsulation data")]
-        public List<Task_Data> task_EE_data = new();
+        [Header("Easy Encapsulation data")]
+        public List<Easy_Task_Data> task_EE_data = new();
         public int correctAttemptAmount_EE;
 
         [Header("Easy Abstraction data")]
-        public List<Task_Data> task_EA_data = new();
+        public List<Easy_Task_Data> task_EA_data = new();
         public int correctAttemptAmount_EA;
 
         [Header("Easy Inheritace data")]
-        public List<Task_Data> task_EI_data = new();
+        public List<Easy_Task_Data> task_EI_data = new();
         public int correctAttemptAmount_EI;
+
+        [Header("Easy Polymorphism data")]
+        public List<Easy_Task_Data> task_EP_data = new();
+        public int correctAttempAmount_EP;
+
+        //Implement medium datasheets later please - Note from Teemu K
+
+        [Header("Hard Inheritance data")]
+        public List<Hard_Task_Data> task_HI_data = new();
+        public int correctAttemptAmount_HI;
+
+        [Header("Hard Encapsulation data")]
+        public List<Hard_Task_Data> task_HE_data = new();
+        public int correctAttemptAmount_HE;
+
+        [Header("Hard Abstraction data")]
+        public List<Hard_Task_Data> task_HA_data = new();
+        public int correctAttemptAmount_HA;
+
+        [Header("Hard Polymorphism data")]
+        public List<Hard_Task_Data> task_HP_data = new();
+        public int correctAttemptAmount_HP;
     }
 
     //Data seen from the Unity inspector
@@ -66,6 +88,26 @@ public class PlayerDataHandler : MonoBehaviour {
         currentPlayerData.task_EI_data = loadedData.task_EI_data;
         currentPlayerData.correctAttemptAmount_EI = loadedData.correctAttemptAmount_EI;
 
-        //add more later...
+        //Easy EP
+        currentPlayerData.task_EP_data = loadedData.task_EP_data;
+        currentPlayerData.correctAttempAmount_EP = loadedData.correctAttempAmount_EP;
+
+        //Implement medium sheets
+
+        //Hard HI
+        currentPlayerData.task_HI_data = loadedData.task_HI_data;
+        currentPlayerData.correctAttemptAmount_HI = loadedData.correctAttemptAmount_HI;
+
+        //Hard HE
+        currentPlayerData.task_HE_data = loadedData.task_HE_data;
+        currentPlayerData.correctAttemptAmount_HE = loadedData.correctAttemptAmount_HE;
+
+        //Hard HA
+        currentPlayerData.task_HA_data = loadedData.task_HA_data;
+        currentPlayerData.correctAttemptAmount_HA = loadedData.correctAttemptAmount_HA;
+
+        //Hard HP
+        currentPlayerData.task_HP_data = loadedData.task_HP_data;
+        currentPlayerData.correctAttemptAmount_HP = loadedData.correctAttemptAmount_HP;
     }
 }

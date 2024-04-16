@@ -7,7 +7,7 @@ public class Task_EI : Task_EE
 {
     protected override void UpdateTaskData(bool correctAttempt) {
         PlayerDataHandler handler = FindObjectOfType<PlayerDataHandler>();
-        Task_Data currentData = data.DataCopy();
+        Easy_Task_Data currentData = data.DataCopy();
         switch (correctAttempt) {
             case true:
             handler.currentPlayerData.task_EI_data.Add(currentData);

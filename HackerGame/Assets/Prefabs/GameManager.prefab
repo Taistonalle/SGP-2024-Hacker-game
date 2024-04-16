@@ -55,7 +55,8 @@ MonoBehaviour:
   easyInheritance: {fileID: 9186751248810204155, guid: fbeb244a7f19f9240a72c363b6df6151,
     type: 3}
   mediumInheritance: {fileID: 0}
-  hardInheritance: {fileID: 0}
+  hardInheritance: {fileID: 3988276875679170175, guid: e9ffe3fcbd6bd1e4c806a8630bf198ab,
+    type: 3}
   easyPolymorphism: {fileID: 0}
   mediumPolymorphism: {fileID: 0}
   hardPolymorphism: {fileID: 0}

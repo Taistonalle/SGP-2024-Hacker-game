@@ -5,15 +5,15 @@ using TMPro;
 using UnityEngine;
 
 [System.Serializable]
-public struct Task_Data {
+public struct Easy_Task_Data {
     public int attempt;
     public int correctAmount;
     //public bool[] slotThatWasCorrect; //Should be same amount as block amount. Adjust from inspector
     public Slot_Data[] slot_datas; //Same amount as blocks adjust from inspector
 
     //Deep copy
-    public Task_Data DataCopy() {
-        Task_Data copy = new Task_Data();
+    public Easy_Task_Data DataCopy() {
+        Easy_Task_Data copy = new Easy_Task_Data();
         copy.attempt = attempt;
         copy.correctAmount = correctAmount;
         //copy.slotThatWasCorrect = new bool[slotThatWasCorrect.Length];
@@ -36,7 +36,7 @@ public class Task_EE : MonoBehaviour {
     [SerializeField] protected string wrongMessage;
 
     [Header("Data for handler")]
-    [SerializeField] protected Task_Data data;
+    [SerializeField] protected Easy_Task_Data data;
 
     protected void Start() {
         GetSlotDatasInfo();
@@ -105,7 +105,7 @@ public class Task_EE : MonoBehaviour {
 
     protected virtual void UpdateTaskData(bool correctAttempt) {
         PlayerDataHandler handler = FindObjectOfType<PlayerDataHandler>();
-        Task_Data currentData = data.DataCopy();
+        Easy_Task_Data currentData = data.DataCopy();
         switch (correctAttempt) {
             case true:
             handler.currentPlayerData.task_EE_data.Add(currentData);
