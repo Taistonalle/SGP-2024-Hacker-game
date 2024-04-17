@@ -31,7 +31,7 @@ public class PlayerDataHandler : MonoBehaviour {
 
         [Header("Easy Polymorphism data")]
         public List<Easy_Task_Data> task_EP_data = new();
-        public int correctAttempAmount_EP;
+        public int correctAttemptAmount_EP;
 
         //Implement medium datasheets later please - Note from Teemu K
 
@@ -90,7 +90,7 @@ public class PlayerDataHandler : MonoBehaviour {
 
         //Easy EP
         currentPlayerData.task_EP_data = loadedData.task_EP_data;
-        currentPlayerData.correctAttempAmount_EP = loadedData.correctAttempAmount_EP;
+        currentPlayerData.correctAttemptAmount_EP = loadedData.correctAttemptAmount_EP;
 
         //Implement medium sheets
 
