@@ -2,18 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEditor.Callbacks;
 
 public class QuestionSetup_MI : MonoBehaviour
 {
-
-    [SerializeField] public List<QuestionData_MI> questions;
+    [SerializeField]
+    public List<QuestionData_MI> questions;
     private QuestionData_MI currentQuestion;
 
-    [SerializeField] private TextMeshProUGUI quesionText;
-    [SerializeField] private AnwserButton_MI[] answerButtons;
+    [SerializeField]
+    private TextMeshProUGUI questionText;
+    [SerializeField]
+    private AnswerButton_MI[] answerButtons;
 
-    [SerializeField] private int correctAnwserChoice;
+    [SerializeField]
+    private int correctAnswerChoice;
+
+    public int correctAnswersCount = 0; // Variable to store the count of correct answers
 
     private void Awake()
     {
@@ -21,79 +25,64 @@ public class QuestionSetup_MI : MonoBehaviour
         GetQuestionAssets();
     }
 
+    // Start is called before the first frame update
     public void Start()
     {
-        //Get new question
+        //Get a new question
         SelectNewQuestion();
-
         // Set all text and values on screen
         SetQuestionValues();
+        // Set all of the answer buttons text and correct answer values
+        SetAnswerValues();
+    }
 
-        // Set all of the anwser buttons text and correct anwser values
-        SetAnwserValues();
+    // Update is called once per frame
+    void Update()
+    {
+
     }
 
     private void GetQuestionAssets()
     {
-        //Get all of the questions from the question folder
+        // Get all of the questions from the questions folder
         questions = new List<QuestionData_MI>(Resources.LoadAll<QuestionData_MI>("Questions_MI"));
     }
 
-    public void SelectNewQuestion()
+    private void SelectNewQuestion()
     {
-        if (questions.Count == 0)
-        {
-            Debug.LogWarning("No more questions available.");
-            return;
-        }
-
-        // Shuffle the list of questions
-        ShuffleQuestions();
-
-        // Set the question to the first index (which is now a random question)
-        currentQuestion = questions[0];
-
-        // Remove this question from the list so it will not be repeared (until game is restarted)
-        questions.RemoveAt(0);
-    }
-    private void ShuffleQuestions()
-    {
-        for (int i = 0; i < questions.Count; i++)
-        {
-            // Swap the current question with a random question in the list
-            int randomIndex = Random.Range(i, questions.Count);
-            QuestionData_MI temp = questions[i];
-            questions[i] = questions[randomIndex];
-            questions[randomIndex] = temp;
-        }
+        // Get a random value for which question to choose
+        int randomQuestionIndex = Random.Range(0, questions.Count);
+        //Set the question to the randon index
+        currentQuestion = questions[randomQuestionIndex];
+        // Remove this question from the list so it will not be repeated (until the game is restarted)
+        questions.RemoveAt(randomQuestionIndex);
     }
 
-    public void SetQuestionValues()
+    private void SetQuestionValues()
     {
         // Set the question text
-        quesionText.text = currentQuestion.question;
-
+        questionText.text = currentQuestion.question;
     }
 
-    public void SetAnwserValues()
+    private void SetAnswerValues()
     {
-        // Randomize the anwser button order
-        List<string> anwsers = RandomizeAnswers(new List<string>(currentQuestion.answers));
+        // Randomize the answer button order
+        List<string> answers = RandomizeAnswers(new List<string>(currentQuestion.answers));
 
-        // Set up the anwser buttons
+        // Set up the answer buttons
         for (int i = 0; i < answerButtons.Length; i++)
         {
             // Create a temporary boolean to pass to the buttons
             bool isCorrect = false;
 
-            // If it is correct anwser, set the bool to true
-            if (i == correctAnwserChoice)
+            // If it is the correct answer, set the bool to true
+            if (i == correctAnswerChoice)
             {
                 isCorrect = true;
             }
 
             answerButtons[i].SetIsCorrect(isCorrect);
-            answerButtons[i].SetAnwserText(anwsers[i]);
+            answerButtons[i].SetAnswerText(answers[i]);
         }
     }
 
@@ -108,16 +97,15 @@ public class QuestionSetup_MI : MonoBehaviour
             // Get a random number of the remaining choices
             int random = Random.Range(0, originalList.Count);
 
-            // If thr random number is 0, this is the correct answer, MAKE SURE THIS IS ONLY USED ONCE
+            // If the random number is 0, this is the correct answer, MAKE SURE THIS IS ONLY USED ONCE
             if (random == 0 && !correctAnswerChosen)
             {
-                correctAnwserChoice = i;
+                correctAnswerChoice = i;
                 correctAnswerChosen = true;
             }
 
             // Add this to the new list
             newList.Add(originalList[random]);
-
             // Remove this choice from the original list (it has been used)
             originalList.RemoveAt(random);
         }
@@ -125,4 +113,9 @@ public class QuestionSetup_MI : MonoBehaviour
         return newList;
     }
 
+    // Method to increment the count of correct answers
+    public void IncrementCorrectAnswersCount()
+    {
+        correctAnswersCount++;
+    }
 }

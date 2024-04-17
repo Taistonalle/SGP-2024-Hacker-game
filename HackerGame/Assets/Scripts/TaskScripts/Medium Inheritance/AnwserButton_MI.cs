@@ -2,67 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System.Threading.Tasks.Sources;
 
-public class AnwserButton_MI : MonoBehaviour
+public class AnswerButton_MI : MonoBehaviour
 {
-
     private bool isCorrect;
-    [SerializeField] private TextMeshProUGUI anwserText;
+    [SerializeField] private TextMeshProUGUI answerText;
 
-    public QuestionSetup_MI questionSetup_MI;
+    // To make it ask a new question after the first question
+    [SerializeField] private QuestionSetup_MI questionSetup;
 
-    private bool isWaitingForReset = false;
-    private float resetTimer = 5f;
+    // This is the game object that is holding all the objects in the task, example "Proto_MI"
+    [SerializeField] private GameObject task;
 
-    private void Update()
+    public void SetAnswerText(string newText)
     {
-        if (isWaitingForReset)
-        {
-            resetTimer -= Time.deltaTime;
-            if (resetTimer <= 0)
-            {
-                ResetTask();
-
-                isWaitingForReset = false;
-            }
-        }
+        answerText.text = newText;
     }
 
-    public void SetAnwserText(string newText)
+    public void SetIsCorrect(bool newBool)
     {
-        anwserText.text = newText;
-    }
-
-    public void SetIsCorrect(bool newBool) 
-    { 
         isCorrect = newBool;
-    }
-
-    private void ResetTask()
-    {
-        resetTimer = 5f;
-        isWaitingForReset = true;
-        questionSetup_MI.Start();
     }
 
     public void OnClick()
     {
         if (isCorrect)
         {
-            questionSetup_MI.SelectNewQuestion();
-            questionSetup_MI.SetQuestionValues();
-            questionSetup_MI.SetAnwserValues();
+            Debug.Log("CORRECT ANSWER");
+            questionSetup.IncrementCorrectAnswersCount();
         }
         else
         {
-            Debug.Log("Wrong Answer!");
+            Debug.Log("WRONG ANSWER");
         }
-        
-        if (questionSetup_MI.questions.Count > 0)
+
+        // Get the next question if there are more in the list
+        if (questionSetup.questions.Count > 0)
         {
             // Generate a new question
-            questionSetup_MI.Start();
+            questionSetup.Start();
+        }
+        else
+        {
+            Debug.Log("all questions have been answered, disable the task");
+            Debug.Log("Correct Answers: " + questionSetup.correctAnswersCount + "/5");
+            task.SetActive(false);
         }
     }
 }
