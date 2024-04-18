@@ -118,4 +118,9 @@ public class QuestionSetup_MI : MonoBehaviour
     {
         correctAnswersCount++;
     }
+
+    //Button function - Added by Teemu K
+    public void CloseTask(GameObject task) {
+        Destroy(task);
+    }
 }

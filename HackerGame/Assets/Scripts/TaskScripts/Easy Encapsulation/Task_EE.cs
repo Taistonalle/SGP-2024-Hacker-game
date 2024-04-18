@@ -82,6 +82,14 @@ public class Task_EE : MonoBehaviour {
         }
     }
 
+    public void CloseWindow(GameObject window) {
+        window.SetActive(false);
+    }
+
+    public void CloseTask(GameObject task) {
+        Destroy(task);
+    }
+
     protected void ResetAttemptData() {
         //for (int i = 0; i < data.slotThatWasCorrect.Length; i++) data.slotThatWasCorrect[i] = false;
         for (int i = 0; i < data.slot_datas.Length; i++) data.slot_datas[i].wasCorrect = false;

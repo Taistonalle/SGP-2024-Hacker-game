@@ -33,4 +33,9 @@ public class GameManager : MonoBehaviour {
         GameObject loadedPrefab = Instantiate(prefabToLoad);
     }
 
+    public void ScreenPowerButton() {
+        Debug.Log("Implement returning back to login screen?");
+        Application.Quit(); //For now just quit
+    }
+
 }

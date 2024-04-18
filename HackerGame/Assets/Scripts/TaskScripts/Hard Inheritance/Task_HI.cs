@@ -183,6 +183,14 @@ public class Task_HI : MonoBehaviour {
         }
     }
 
+    public void CloseWindow(GameObject window) {
+        window.SetActive(false);
+    }
+
+    public void CloseTask(GameObject task) {
+        Destroy(task);
+    }
+
     protected void ResetAttemptData() {
         for (int i = 0; i < data.inputField_datas.Length; i++) data.inputField_datas[i].wasCorrect = false;
         data.correctAmount = 0;
@@ -221,14 +229,14 @@ public class Task_HI : MonoBehaviour {
         }
     }
 
-    public virtual void DisplayHintMsg() {
+    protected virtual void DisplayHintMsg() {
         string oldMsg = notePadTxt.text;
         notePadTxt.text = $"{oldMsg}\n\n{hintTxt}";
 
         hintButton.gameObject.SetActive(false);
     }
 
-    public virtual void CheckIfHintButtonShouldBeShown(int counterLimit) {
+    protected virtual void CheckIfHintButtonShouldBeShown(int counterLimit) {
         if (hintNoteCounter == counterLimit) {
             switch (hintButtonShown) {
                 case false:
@@ -239,7 +247,7 @@ public class Task_HI : MonoBehaviour {
         }
     }
 
-    public virtual IEnumerator TerminalMessage(string message, bool correct) {
+    protected virtual IEnumerator TerminalMessage(string message, bool correct) {
         //Store old message
         string oldMessage = terminalTxt.text;
 
