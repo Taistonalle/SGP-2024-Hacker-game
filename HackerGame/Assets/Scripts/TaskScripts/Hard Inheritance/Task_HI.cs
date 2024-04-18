@@ -229,7 +229,8 @@ public class Task_HI : MonoBehaviour {
         }
     }
 
-    protected virtual void DisplayHintMsg() {
+    //Button function, keep public
+    public virtual void DisplayHintMsg() {
         string oldMsg = notePadTxt.text;
         notePadTxt.text = $"{oldMsg}\n\n{hintTxt}";
 

@@ -541,11 +541,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DebugTester
       objectReference: {fileID: 0}
-    - target: {fileID: 1043616560488903177, guid: 0daf9abd294ed844bac42ef66c8fe534,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1831477725626239612, guid: 0daf9abd294ed844bac42ef66c8fe534,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -612,6 +607,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4354974476610847162, guid: 0daf9abd294ed844bac42ef66c8fe534,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 377326135}
+    - target: {fileID: 5346013728090518931, guid: 0daf9abd294ed844bac42ef66c8fe534,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

@@ -51,7 +51,8 @@ MonoBehaviour:
   easyAbstraction: {fileID: 5691568415665760692, guid: bffef0d0f5838db4c8201c54ae03b349,
     type: 3}
   mediumAbstraction: {fileID: 0}
-  hardAbstraction: {fileID: 0}
+  hardAbstraction: {fileID: 6483074522167272590, guid: b78f9ae9f08f8a54b86f19d52044c256,
+    type: 3}
   easyInheritance: {fileID: 9186751248810204155, guid: fbeb244a7f19f9240a72c363b6df6151,
     type: 3}
   mediumInheritance: {fileID: 5585472465038120726, guid: 8ff8635389a3a4945bd344500a55c0e6,
