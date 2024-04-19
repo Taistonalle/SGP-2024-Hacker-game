@@ -24,7 +24,6 @@ public class PlayerDataHandler : MonoBehaviour {
         }
     }
 }
-```
 
 // In this script, replace `"http://yourwebsite.com/yourscript.php"` with the URL of your PHP script. You can call `SaveData` as a coroutine to send the data to the server:
 
