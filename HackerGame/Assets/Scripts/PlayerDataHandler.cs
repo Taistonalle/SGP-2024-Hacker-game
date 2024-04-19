@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Networking; // NEW ADDITION -Teemu H
 
 public class PlayerDataHandler : MonoBehaviour {
     /* Documentation used for this script
@@ -53,18 +54,46 @@ public class PlayerDataHandler : MonoBehaviour {
     }
 
     //Data seen from the Unity inspector
-    // I changed this from private to public because protection level -teemu h
+    // I changed this from private to public because protection level -Teemu H
     //"Assets\Scripts\DatabaseScipts\LoginManager.cs(66,31): error CS0122: 'PlayerDataHandler.currentPlayerData' is inaccessible due to its protection level"
     public PlayerData currentPlayerData;
 
-    
-    //Save from currentPlayerData to json file
+
+    //NEW PART OF SAVE SAVEDATA() -Teemu H
     public void SaveData() {
         string json = JsonUtility.ToJson(currentPlayerData, true);
         string path = Path.Combine(Application.persistentDataPath, "currentPlayerData.json");
 
         File.WriteAllText(path, json);
+
+        StartCoroutine(SendDataToServer(json));
     }
+
+    public IEnumerator SendDataToServer(string json) {
+        UnityWebRequest www = new UnityWebRequest("http://44.211.154.174/PlayerDataHandler.php", "POST");
+        byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(json);
+        www.uploadHandler = new UploadHandlerRaw(bodyRaw);
+        www.downloadHandler = new DownloadHandlerBuffer();
+        www.SetRequestHeader("Content-Type", "application/json");
+
+        yield return www.SendWebRequest();
+
+        if (www.result != UnityWebRequest.Result.Success) {
+            Debug.Log(www.error);
+        } else {
+            Debug.Log("Data uploaded successfully");
+        }
+    }
+  
+    //Save from currentPlayerData to json file
+
+    // ORIGINAL PART OF SAVEDATA(), BEFORE Modifications. -Teemu H
+    // public void SaveData() {
+    //     string json = JsonUtility.ToJson(currentPlayerData, true);
+    //     string path = Path.Combine(Application.persistentDataPath, "currentPlayerData.json");
+
+    //     File.WriteAllText(path, json);
+    // }
 
     //Load data from the json file
     public void LoadData() {
