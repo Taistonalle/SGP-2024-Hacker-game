@@ -70,7 +70,7 @@ public class PlayerDataHandler : MonoBehaviour {
     }
 
     public IEnumerator SendDataToServer(string json) {
-        UnityWebRequest www = new UnityWebRequest("http://44.211.154.174/PlayerDataHandler.php", "POST");
+        UnityWebRequest www = new UnityWebRequest("http://44.211.154.174/mysqlyoutube/PlayerDataHandler.php", "POST");
         byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(json);
         www.uploadHandler = new UploadHandlerRaw(bodyRaw);
         www.downloadHandler = new DownloadHandlerBuffer();
