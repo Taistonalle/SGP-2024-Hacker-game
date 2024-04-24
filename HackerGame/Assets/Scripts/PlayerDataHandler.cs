@@ -34,6 +34,8 @@ public class PlayerDataHandler : MonoBehaviour {
         public List<Easy_Task_Data> task_EP_data = new();
         public int correctAttemptAmount_EP;
 
+        public string _rev; // This is for the CouchDB -Teemu H
+
         //Implement medium datasheets later please - Note from Teemu K
 
         [Header("Hard Inheritance data")]
@@ -66,24 +68,72 @@ public class PlayerDataHandler : MonoBehaviour {
 
         File.WriteAllText(path, json);
 
-        StartCoroutine(SendDataToServer(json));
+        // Read the file content.
+        string fileContent = File.ReadAllText(path);
+
+        StartCoroutine(SendDataToServer(fileContent));
     }
+    public IEnumerator SendDataToServer(string fileContent) {
+        // Parse the file content back into a PlayerData object.
+        PlayerData playerData = JsonUtility.FromJson<PlayerData>(fileContent);
 
-    public IEnumerator SendDataToServer(string json) {
-        UnityWebRequest www = new UnityWebRequest("http://44.211.154.174/mysqlyoutube/PlayerDataHandler.php", "POST");
-        byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(json);
-        www.uploadHandler = new UploadHandlerRaw(bodyRaw);
-        www.downloadHandler = new DownloadHandlerBuffer();
-        www.SetRequestHeader("Content-Type", "application/json");
+        // The URL should include the document ID/Player at the end.
+        string url = "http://admin:SALASANA@44.211.154.174:5984/playerdata/defaultplayer";
 
-        yield return www.SendWebRequest();
+        // Send a GET request to the document's URL to retrieve the current _rev value.
+        UnityWebRequest getReq = UnityWebRequest.Get(url);
+        yield return getReq.SendWebRequest();
 
-        if (www.result != UnityWebRequest.Result.Success) {
-            Debug.Log(www.error);
+        // Convert the PlayerData object back into a JSON string.
+        string jsonWithRev;
+
+        if (getReq.result != UnityWebRequest.Result.Success) {
+            // If the GET request fails, assume the document doesn't exist and create a new one.
+            jsonWithRev = JsonUtility.ToJson(playerData);
+        } else {
+            // If the GET request succeeds, update the existing document.
+            // Parse the response body.
+            PlayerData responseData = JsonUtility.FromJson<PlayerData>(getReq.downloadHandler.text);
+
+            // Add the _rev field to the PlayerData object.
+            playerData._rev = responseData._rev;
+
+            // Convert the PlayerData object back into a JSON string.
+            jsonWithRev = JsonUtility.ToJson(playerData);
+        }
+
+        // Send a PUT request to create or update the document.
+        UnityWebRequest putReq = new UnityWebRequest(url, "PUT");
+        byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonWithRev);
+        putReq.uploadHandler = new UploadHandlerRaw(bodyRaw);
+        putReq.downloadHandler = new DownloadHandlerBuffer();
+        putReq.SetRequestHeader("Content-Type", "application/json");
+
+        yield return putReq.SendWebRequest();
+
+        if (putReq.result != UnityWebRequest.Result.Success) {
+            Debug.Log(putReq.error);
         } else {
             Debug.Log("Data uploaded successfully");
         }
     }
+
+    // MYSQL DATABASE CONNECTION -Teemu H
+    // public IEnumerator SendDataToServer(string json) {
+    //     UnityWebRequest www = new UnityWebRequest("http://44.211.154.174/mysqlyoutube/PlayerDataHandler.php", "POST");
+    //     byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(json);
+    //     www.uploadHandler = new UploadHandlerRaw(bodyRaw);
+    //     www.downloadHandler = new DownloadHandlerBuffer();
+    //     www.SetRequestHeader("Content-Type", "application/json");
+
+    //     yield return www.SendWebRequest();
+
+    //     if (www.result != UnityWebRequest.Result.Success) {
+    //         Debug.Log(www.error);
+    //     } else {
+    //         Debug.Log("Data uploaded successfully");
+    //     }
+    // }
   
     //Save from currentPlayerData to json file
 
@@ -96,6 +146,21 @@ public class PlayerDataHandler : MonoBehaviour {
     // }
 
     //Load data from the json file
+
+    // This is for the future. -Teemu H
+
+    // public void LoadData() {
+    //     UnityWebRequest www = UnityWebRequest.Get("http://your-couchdb-server/PlayerData/" + currentPlayerData.email);
+    //     yield return www.SendWebRequest();
+
+    //     if (www.result != UnityWebRequest.Result.Success) {
+    //         Debug.Log(www.error);
+    //     } else {
+    //         string json = www.downloadHandler.text;
+    //         PlayerData loadedData = JsonUtility.FromJson<PlayerData>(json);
+    //         // ... copy data from loadedData to currentPlayerData ...
+    //     }
+    // }
     public void LoadData() {
         string path = Path.Combine(Application.persistentDataPath, "currentPlayerData.json");
         string json = File.ReadAllText(path);
@@ -140,3 +205,5 @@ public class PlayerDataHandler : MonoBehaviour {
         currentPlayerData.correctAttemptAmount_HP = loadedData.correctAttemptAmount_HP;
     }
 }
+
+
