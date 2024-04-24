@@ -42,7 +42,7 @@ public class QuestionSetup_MI : MonoBehaviour
 
     }
 
-    private void GetQuestionAssets()
+    public virtual void GetQuestionAssets()
     {
         // Get all of the questions from the questions folder
         questions = new List<QuestionData_MI>(Resources.LoadAll<QuestionData_MI>("Questions_MI"));
