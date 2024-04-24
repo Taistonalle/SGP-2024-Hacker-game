@@ -23,7 +23,7 @@ public class Task_EI : Task_EE
     protected override void GetTaskAttemptData() {
         PlayerDataHandler handler = FindObjectOfType<PlayerDataHandler>();
         if (handler.currentPlayerData.task_EI_data.Count == 0) data.attempt = 1;
-        else data.attempt = handler.currentPlayerData.task_EI_data.Count;
+        else data.attempt = handler.currentPlayerData.task_EI_data.Count + 1;
     }
 
     protected override void GetSlotDatasInfo() {

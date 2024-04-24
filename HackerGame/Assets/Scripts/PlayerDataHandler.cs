@@ -36,7 +36,21 @@ public class PlayerDataHandler : MonoBehaviour {
 
         public string _rev; // This is for the CouchDB -Teemu H
 
-        //Implement medium datasheets later please - Note from Teemu K
+        [Header("Medium Encapsulation data")]
+        public List<Medium_Task_Data> task_ME_data = new();
+        public int correctAttemptAmount_ME;
+
+        [Header("Medium Abstraction data")]
+        public List<Medium_Task_Data> task_MA_data = new();
+        public int correctAttemptAmount_MA;
+
+        [Header("Medium Inheritance data")]
+        public List<Medium_Task_Data> task_MI_data = new();
+        public int correctAttemptAmount_MI;
+       
+        [Header("Medium Polymorphism data")]
+        public List<Medium_Task_Data> task_MP_data = new();
+        public int correctAttemptAmount_MP;
 
         [Header("Hard Inheritance data")]
         public List<Hard_Task_Data> task_HI_data = new();
@@ -78,7 +92,7 @@ public class PlayerDataHandler : MonoBehaviour {
         PlayerData playerData = JsonUtility.FromJson<PlayerData>(fileContent);
 
         // The URL should include the document ID/Player at the end.
-        string url = "http://admin:SALASANA@44.211.154.174:5984/playerdata/defaultplayer";
+        string url = "http://admin:KUMMALLINENSALASANA@44.211.154.174:5984/playerdata/defaultplayer"; //Note to everyone: make sure the password is not pushed to git! 
 
         // Send a GET request to the document's URL to retrieve the current _rev value.
         UnityWebRequest getReq = UnityWebRequest.Get(url);

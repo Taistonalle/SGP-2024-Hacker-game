@@ -3,11 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+[System.Serializable]
+public struct Medium_Task_Data {
+    public int attempt;
+    public int correctAmount;
+    public QuestionSelectionData[] questionData;
+
+    //Deep copy
+    public Medium_Task_Data DataCopy() {
+        Medium_Task_Data copy = new Medium_Task_Data();
+        copy.attempt = attempt;
+        copy.correctAmount = correctAmount;
+        copy.questionData = new QuestionSelectionData[questionData.Length];
+        System.Array.Copy(questionData, copy.questionData, questionData.Length);
+        return copy;
+    }
+}
+[System.Serializable]
+public struct QuestionSelectionData {
+    public string question;
+    public string whatWasSelected;
+    public bool wasCorrect;
+}
+
 public class QuestionSetup_MI : MonoBehaviour
 {
+    //----Teemu K additions----
+    [Header("Data for handler")]
+    [Space(10f)]
+    public Medium_Task_Data data;
+    //----End of additions----
+
     [SerializeField]
     public List<QuestionData_MI> questions;
-    private QuestionData_MI currentQuestion;
+    public QuestionData_MI currentQuestion; //Changed this to public - Teemu K
 
     [SerializeField]
     private TextMeshProUGUI questionText;
@@ -17,12 +46,19 @@ public class QuestionSetup_MI : MonoBehaviour
     [SerializeField]
     private int correctAnswerChoice;
 
-    public int correctAnswersCount = 0; // Variable to store the count of correct answers
+    //public int correctAnswersCount = 0; // Variable to store the count of correct answers ----Commented this to use struct int instead----
 
-    private void Awake()
+    private void Awake() 
     {
         // Get all the questions ready
         GetQuestionAssets();
+        data.questionData = new QuestionSelectionData[questions.Count]; //Make sure the questionData list is long enough inside the data sheet
+        try {
+            GetTaskAttemptData();
+        } catch {
+            Debug.Log("No data about this task yet or PlayerDataHandler is missing from scene. Starting as first attempt.");
+            data.attempt = 1;
+        }
     }
 
     // Start is called before the first frame update
@@ -116,11 +152,47 @@ public class QuestionSetup_MI : MonoBehaviour
     // Method to increment the count of correct answers
     public void IncrementCorrectAnswersCount()
     {
-        correctAnswersCount++;
+        //correctAnswersCount++;
+        data.correctAmount++;
     }
 
-    //Button function - Added by Teemu K
+    //Functions added by Teemu K below
     public void CloseTask(GameObject task) {
         Destroy(task);
+    }
+
+    public void ResetAttemptData() {
+        GetQuestionAssets();
+        SelectNewQuestion();
+        SetQuestionValues();
+        SetAnswerValues();
+        for (int i = 0; i < data.questionData.Length; i++) {
+            data.questionData[i].question = "";
+            data.questionData[i].whatWasSelected = "";
+            data.questionData[i].wasCorrect = false;
+        }
+        data.correctAmount = 0;
+        data.attempt++;
+    }
+
+    public virtual void GetTaskAttemptData() {
+        PlayerDataHandler handler = FindObjectOfType<PlayerDataHandler>();
+        if (handler.currentPlayerData.task_MI_data.Count == 0) data.attempt = 1;
+        else data.attempt = handler.currentPlayerData.task_MI_data.Count + 1;
+    }
+
+    public virtual void UpdateTaskData(bool correctAttempt) {
+        PlayerDataHandler handler = FindObjectOfType<PlayerDataHandler>();
+        Medium_Task_Data currentData = data.DataCopy();
+        switch (correctAttempt) {
+            case true:
+            handler.currentPlayerData.task_MI_data.Add(currentData);
+            handler.currentPlayerData.correctAttemptAmount_MI++;
+            break;
+
+            case false:
+            handler.currentPlayerData.task_MI_data.Add(currentData);
+            break;
+        }
     }
 }

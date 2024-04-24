@@ -110,7 +110,7 @@ public class Task_HA : Task_HI {
     protected override void GetTaskAttemptData() {
         PlayerDataHandler handler = FindObjectOfType<PlayerDataHandler>();
         if (handler.currentPlayerData.task_HA_data.Count == 0) data.attempt = 1;
-        else data.attempt = handler.currentPlayerData.task_HA_data.Count;
+        else data.attempt = handler.currentPlayerData.task_HA_data.Count + 1;
     }
 
     protected override void UpdateTaskData(bool correctAttempt) {

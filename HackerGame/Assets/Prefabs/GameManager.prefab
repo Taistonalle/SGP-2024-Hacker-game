@@ -46,11 +46,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   easyEncapsulation: {fileID: 1114825187058425024, guid: ba174aacd6e3d104380c04823240ffb5,
     type: 3}
-  mediumEncapsulation: {fileID: 0}
+  mediumEncapsulation: {fileID: 5497974722244437020, guid: 78968615622ac6345bb78f2307b196b1,
+    type: 3}
   hardEncapsulation: {fileID: 0}
   easyAbstraction: {fileID: 5691568415665760692, guid: bffef0d0f5838db4c8201c54ae03b349,
     type: 3}
-  mediumAbstraction: {fileID: 0}
+  mediumAbstraction: {fileID: 7018110620593016029, guid: 02cef3d2e4dec8745b246d448b4b03df,
+    type: 3}
   hardAbstraction: {fileID: 6483074522167272590, guid: b78f9ae9f08f8a54b86f19d52044c256,
     type: 3}
   easyInheritance: {fileID: 9186751248810204155, guid: fbeb244a7f19f9240a72c363b6df6151,
@@ -61,5 +63,6 @@ MonoBehaviour:
     type: 3}
   easyPolymorphism: {fileID: 6979512362545990177, guid: 2f5dbd19a5675be4a955e2d7d2c2c464,
     type: 3}
-  mediumPolymorphism: {fileID: 0}
+  mediumPolymorphism: {fileID: 6258552553710000000, guid: a3a3f26f8260c17439b2e00d7097f0ec,
+    type: 3}
   hardPolymorphism: {fileID: 0}

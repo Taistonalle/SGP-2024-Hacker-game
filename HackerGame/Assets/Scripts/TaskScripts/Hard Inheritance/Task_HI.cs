@@ -211,7 +211,7 @@ public class Task_HI : MonoBehaviour {
     protected virtual void GetTaskAttemptData() {
         PlayerDataHandler handler = FindObjectOfType<PlayerDataHandler>();
         if (handler.currentPlayerData.task_HI_data.Count == 0) data.attempt = 1;
-        else data.attempt = handler.currentPlayerData.task_HI_data.Count;
+        else data.attempt = handler.currentPlayerData.task_HI_data.Count + 1;
     }
 
     protected virtual void UpdateTaskData(bool correctAttempt) {
@@ -254,7 +254,7 @@ public class Task_HI : MonoBehaviour {
 
         switch (correct) {
             case true:
-            terminalTxt.text = $"{data.correctAmount} out of {inputFields.Length} were right\n" + message;
+            terminalTxt.text = $"{data.correctAmount} out of {inputFields.Length} were right\nAttempt: {data.attempt}\n" + message;
             Debug.Log("Implement unlocking for harder task");
             foreach (TMP_InputField field in inputFields) field.gameObject.SetActive(false);
             yield return new WaitForSeconds(messageTimeOnTerminal);
@@ -263,7 +263,7 @@ public class Task_HI : MonoBehaviour {
             break;
 
             case false:
-            terminalTxt.text = $"{data.correctAmount} out of {inputFields.Length} were right\n" + message;
+            terminalTxt.text = $"{data.correctAmount} out of {inputFields.Length} were right\nAttempt: {data.attempt}\n" + message;
             yield return new WaitForSeconds(messageTimeOnTerminal);
             terminalTxt.text = oldMessage;
             foreach (TMP_InputField field in inputFields) field.gameObject.SetActive(true);

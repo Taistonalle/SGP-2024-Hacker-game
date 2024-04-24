@@ -25,7 +25,7 @@ public class Task_EP : Task_EE
     {
         PlayerDataHandler handler = FindObjectOfType<PlayerDataHandler>();
         if (handler.currentPlayerData.task_EP_data.Count == 0) data.attempt = 1;
-        else data.attempt = handler.currentPlayerData.task_EP_data.Count;
+        else data.attempt = handler.currentPlayerData.task_EP_data.Count + 1;
     }
 
     protected override void GetSlotDatasInfo()

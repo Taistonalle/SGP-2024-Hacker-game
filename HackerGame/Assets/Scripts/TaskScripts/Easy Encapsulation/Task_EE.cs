@@ -108,7 +108,7 @@ public class Task_EE : MonoBehaviour {
     protected virtual void GetTaskAttemptData() {
         PlayerDataHandler handler = FindObjectOfType<PlayerDataHandler>();
         if (handler.currentPlayerData.task_EE_data.Count == 0) data.attempt = 1;
-        else data.attempt = handler.currentPlayerData.task_EE_data.Count;
+        else data.attempt = handler.currentPlayerData.task_EE_data.Count + 1;
     }
 
     protected virtual void UpdateTaskData(bool correctAttempt) {
