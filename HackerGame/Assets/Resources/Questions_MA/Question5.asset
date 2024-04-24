@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373121d22a558314d8b6f3a0704617cd, type: 3}
+  m_Name: Question5
+  m_EditorClassIdentifier: 
+  question: What significant advantage does abstraction offer in software development?
+  answers:
+  - Enhanced code maintainability and reduced complexity by emphasizing essential
+    concepts and hiding implementation details.
+  - Improved runtime efficiency through optimized algorithm design.
+  - Facilitated debugging process by providing detailed error messages.
+  - Ensured data integrity through strict type checking mechanisms.
