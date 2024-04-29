@@ -13,7 +13,8 @@ public class Task_EP : Task_EE
             case true:
                 handler.currentPlayerData.task_EP_data.Add(currentData);
                 handler.currentPlayerData.correctAttemptAmount_EP++;
-                break;
+                gameManager.EnableCheckMark(3);
+            break;
 
             case false:
                 handler.currentPlayerData.task_EP_data.Add(currentData);

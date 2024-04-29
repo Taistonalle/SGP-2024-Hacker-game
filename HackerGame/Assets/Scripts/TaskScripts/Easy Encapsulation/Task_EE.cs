@@ -25,7 +25,7 @@ public struct Easy_Task_Data {
 }
 
 public class Task_EE : MonoBehaviour {
-
+    protected GameManager gameManager;
     [SerializeField] protected GameObject[] slots, blocks;
     [SerializeField] protected TextMeshProUGUI terminalTxt;
     [SerializeField] protected float messageTimeOnTerminal;
@@ -39,6 +39,7 @@ public class Task_EE : MonoBehaviour {
     [SerializeField] protected Easy_Task_Data data;
 
     protected void Start() {
+        gameManager = FindObjectOfType<GameManager>();
         GetSlotDatasInfo();
         try {
             GetTaskAttemptData();
@@ -118,6 +119,7 @@ public class Task_EE : MonoBehaviour {
             case true:
             handler.currentPlayerData.task_EE_data.Add(currentData);
             handler.currentPlayerData.correctAttemptAmount_EE++;
+            gameManager.EnableCheckMark(0);
             break;
 
             case false:

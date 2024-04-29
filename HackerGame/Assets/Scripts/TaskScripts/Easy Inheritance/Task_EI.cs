@@ -12,6 +12,7 @@ public class Task_EI : Task_EE
             case true:
             handler.currentPlayerData.task_EI_data.Add(currentData);
             handler.currentPlayerData.correctAttemptAmount_EI++;
+            gameManager.EnableCheckMark(2);
             break;
 
             case false:

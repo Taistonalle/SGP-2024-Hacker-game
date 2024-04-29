@@ -29,9 +29,23 @@ public struct QuestionSelectionData {
 public class QuestionSetup_MI : MonoBehaviour
 {
     //----Teemu K additions----
+    private int persistentQuestionCount;
+    protected GameManager gameManager;
     [Header("Data for handler")]
-    [Space(10f)]
     public Medium_Task_Data data;
+
+    [Space(10f)]
+    [Header("Terminal messages")]
+    [SerializeField] float messageTimeOnTerminal;
+    [TextArea(2,4)]
+    public string correctMessage;
+    [TextArea(2,4)]
+    public string wrongMessage;
+    [SerializeField] TextMeshProUGUI terminalQuestionHeader;
+    [SerializeField] TextMeshProUGUI terminalQuestionTxt;
+    [SerializeField] GameObject[] objectsToHide; //Hide these while terminal message is active
+
+    [Header("Original stuff below")]
     //----End of additions----
 
     [SerializeField]
@@ -50,9 +64,12 @@ public class QuestionSetup_MI : MonoBehaviour
 
     private void Awake() 
     {
+        gameManager = FindObjectOfType<GameManager>();
+
         // Get all the questions ready
         GetQuestionAssets();
         data.questionData = new QuestionSelectionData[questions.Count]; //Make sure the questionData list is long enough inside the data sheet
+        persistentQuestionCount = questions.Count;
         try {
             GetTaskAttemptData();
         } catch {
@@ -160,6 +177,9 @@ public class QuestionSetup_MI : MonoBehaviour
     public void CloseTask(GameObject task) {
         Destroy(task);
     }
+    public void CloseWindow(GameObject window) {
+        window.SetActive(false);
+    }
 
     public void ResetAttemptData() {
         GetQuestionAssets();
@@ -188,10 +208,40 @@ public class QuestionSetup_MI : MonoBehaviour
             case true:
             handler.currentPlayerData.task_MI_data.Add(currentData);
             handler.currentPlayerData.correctAttemptAmount_MI++;
+            gameManager.EnableCheckMark(6);
             break;
 
             case false:
             handler.currentPlayerData.task_MI_data.Add(currentData);
+            break;
+        }
+    }
+
+    public virtual IEnumerator TerminalMessage(string message, bool correct) {
+        //Store old text fields
+        string oldQuestinHeader = terminalQuestionHeader.text;
+        string oldQuestionTxt = terminalQuestionTxt.text;
+
+        switch (correct) {
+            case true:
+            terminalQuestionHeader.text = "Result";
+            terminalQuestionTxt.text = $"{data.correctAmount} out of {persistentQuestionCount} were right\nAttempt: {data.attempt}\n" + message;
+            foreach (GameObject objekti in objectsToHide) objekti.SetActive(false);
+            yield return new WaitForSeconds(messageTimeOnTerminal);
+            UpdateTaskData(true);
+            Destroy(gameObject);
+            break;
+
+            case false:
+            terminalQuestionHeader.text = "Result";
+            terminalQuestionTxt.text = $"{data.correctAmount} out of {persistentQuestionCount} were right\nAttempt: {data.attempt}\n" + message;
+            foreach (GameObject objekti in objectsToHide) objekti.SetActive(false);
+            yield return new WaitForSeconds(messageTimeOnTerminal);
+            terminalQuestionHeader.text = oldQuestinHeader;
+            terminalQuestionTxt.text = oldQuestionTxt;
+            UpdateTaskData(false);
+            ResetAttemptData();
+            foreach (GameObject objekti in objectsToHide) objekti.SetActive(true);
             break;
         }
     }

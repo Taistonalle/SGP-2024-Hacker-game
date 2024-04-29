@@ -24,6 +24,7 @@ public class QuestionSetup_MP : QuestionSetup_MI
             case true:
             handler.currentPlayerData.task_MP_data.Add(currentData);
             handler.currentPlayerData.correctAttemptAmount_MP++;
+            gameManager.EnableCheckMark(7);
             break;
 
             case false:

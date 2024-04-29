@@ -2522,7 +2522,7 @@ GameObject:
   - component: {fileID: 1853967633948654067}
   m_Layer: 0
   m_Name: Proto_HI
-  m_TagString: Untagged
+  m_TagString: Task
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

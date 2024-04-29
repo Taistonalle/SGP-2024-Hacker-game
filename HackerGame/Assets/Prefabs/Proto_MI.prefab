@@ -824,8 +824,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Task_EE, Assembly-CSharp
+      - m_Target: {fileID: 6052212102631133593}
+        m_TargetAssemblyTypeName: QuestionSetup_MI, Assembly-CSharp
         m_MethodName: CloseWindow
         m_Mode: 2
         m_Arguments:
@@ -2047,7 +2047,7 @@ GameObject:
   - component: {fileID: 6052212102631133593}
   m_Layer: 0
   m_Name: Proto_MI
-  m_TagString: Untagged
+  m_TagString: Task
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2080,7 +2080,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b9dca687c8b044ca58b704c45ed6d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data:
+    attempt: 0
+    correctAmount: 0
+    questionData: []
+  messageTimeOnTerminal: 3
+  correctMessage: Correct! Well done! Unhacking new folder...
+  wrongMessage: Incorrect! Try again.
+  terminalQuestionHeader: {fileID: 8222665813105974540}
+  terminalQuestionTxt: {fileID: 1327706753220501900}
+  objectsToHide:
+  - {fileID: 5565204656692534730}
+  - {fileID: 3998002782626323098}
+  - {fileID: 4200837305309329296}
+  - {fileID: 3510302642911021516}
+  - {fileID: 1213618705435109575}
   questions: []
+  currentQuestion: {fileID: 0}
   questionText: {fileID: 1327706753220501900}
   answerButtons:
   - {fileID: 1094029099518672609}
@@ -2088,7 +2104,6 @@ MonoBehaviour:
   - {fileID: 1841311661186503373}
   - {fileID: 5435962542698600487}
   correctAnswerChoice: 0
-  correctAnswersCount: 0
 --- !u!1 &6055337670266881649
 GameObject:
   m_ObjectHideFlags: 0

@@ -547,7 +547,7 @@ MonoBehaviour:
   - {fileID: 8748001579019652591}
   - {fileID: 6549339346274753592}
   - {fileID: 3084985363758111958}
-  - {fileID: 3897853479385829730}
+  - {fileID: 7780470573278873543}
   - {fileID: 358994296884930403}
   id: 2
   minDistanceFromSlot: 0
@@ -826,7 +826,7 @@ MonoBehaviour:
   - {fileID: 8748001579019652591}
   - {fileID: 6549339346274753592}
   - {fileID: 3084985363758111958}
-  - {fileID: 3897853479385829730}
+  - {fileID: 7780470573278873543}
   - {fileID: 358994296884930403}
   id: 1
   minDistanceFromSlot: 0
@@ -2050,7 +2050,7 @@ MonoBehaviour:
   - {fileID: 8748001579019652591}
   - {fileID: 6549339346274753592}
   - {fileID: 3084985363758111958}
-  - {fileID: 3897853479385829730}
+  - {fileID: 7780470573278873543}
   - {fileID: 358994296884930403}
   id: 4
   minDistanceFromSlot: 0
@@ -2827,7 +2827,7 @@ MonoBehaviour:
   - {fileID: 8748001579019652591}
   - {fileID: 6549339346274753592}
   - {fileID: 3084985363758111958}
-  - {fileID: 3897853479385829730}
+  - {fileID: 7780470573278873543}
   - {fileID: 358994296884930403}
   id: 0
   minDistanceFromSlot: 0
@@ -2844,7 +2844,7 @@ GameObject:
   - component: {fileID: 3058663564406589539}
   m_Layer: 0
   m_Name: Proto_EP
-  m_TagString: Untagged
+  m_TagString: Task
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3269,7 +3269,7 @@ MonoBehaviour:
   - {fileID: 8748001579019652591}
   - {fileID: 6549339346274753592}
   - {fileID: 3084985363758111958}
-  - {fileID: 3897853479385829730}
+  - {fileID: 7780470573278873543}
   - {fileID: 358994296884930403}
   id: 3
   minDistanceFromSlot: 0
@@ -3775,7 +3775,7 @@ MonoBehaviour:
   - {fileID: 8748001579019652591}
   - {fileID: 6549339346274753592}
   - {fileID: 3084985363758111958}
-  - {fileID: 3897853479385829730}
+  - {fileID: 7780470573278873543}
   - {fileID: 358994296884930403}
   id: 6
   minDistanceFromSlot: 0
@@ -4332,7 +4332,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3058663564406589539}
         m_TargetAssemblyTypeName: Task_EE, Assembly-CSharp
         m_MethodName: CheckAnswer
         m_Mode: 1

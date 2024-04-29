@@ -14,6 +14,9 @@ public class PlayerDataHandler : MonoBehaviour {
 
     [System.Serializable]
     public class PlayerData {
+        [Header("Database related")]
+        public string _rev; // This is for the CouchDB -Teemu H. EDIT: Moved this here, looks nicer in inspector this way :) -Teemu K
+
         [Header("User data")]
         public string email;
         public string userName;
@@ -34,8 +37,6 @@ public class PlayerDataHandler : MonoBehaviour {
         public List<Easy_Task_Data> task_EP_data = new();
         public int correctAttemptAmount_EP;
 
-        public string _rev; // This is for the CouchDB -Teemu H
-
         [Header("Medium Encapsulation data")]
         public List<Medium_Task_Data> task_ME_data = new();
         public int correctAttemptAmount_ME;
@@ -52,10 +53,6 @@ public class PlayerDataHandler : MonoBehaviour {
         public List<Medium_Task_Data> task_MP_data = new();
         public int correctAttemptAmount_MP;
 
-        [Header("Hard Inheritance data")]
-        public List<Hard_Task_Data> task_HI_data = new();
-        public int correctAttemptAmount_HI;
-
         [Header("Hard Encapsulation data")]
         public List<Hard_Task_Data> task_HE_data = new();
         public int correctAttemptAmount_HE;
@@ -63,6 +60,10 @@ public class PlayerDataHandler : MonoBehaviour {
         [Header("Hard Abstraction data")]
         public List<Hard_Task_Data> task_HA_data = new();
         public int correctAttemptAmount_HA;
+       
+        [Header("Hard Inheritance data")]
+        public List<Hard_Task_Data> task_HI_data = new();
+        public int correctAttemptAmount_HI;
 
         [Header("Hard Polymorphism data")]
         public List<Hard_Task_Data> task_HP_data = new();

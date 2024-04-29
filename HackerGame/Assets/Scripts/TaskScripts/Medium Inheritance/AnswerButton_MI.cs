@@ -65,14 +65,12 @@ public class AnswerButton_MI : MonoBehaviour
             switch (questionSetup.data.correctAmount) {
                 case 5:
                 //All correct, update as correct attempt and destroy task object
-                questionSetup.UpdateTaskData(true);
-                Destroy(task);
+                questionSetup.StartCoroutine(questionSetup.TerminalMessage(questionSetup.correctMessage, true));
                 break;
 
                 default:
                 //Default aka else, update as incorrect attempt and restart task
-                questionSetup.UpdateTaskData(false);
-                questionSetup.ResetAttemptData();
+                questionSetup.StartCoroutine(questionSetup.TerminalMessage(questionSetup.wrongMessage, false));
                 break;
             }
         }
