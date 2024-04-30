@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] GameObject[] mark;
 
     void Start() {
-
+        CheckProgress();
     }
 
     public void LoadPrefab(GameObject prefabToLoad) {
@@ -46,5 +46,22 @@ public class GameManager : MonoBehaviour {
 
     public void EnableCheckMark(int markIndex) {
         mark[markIndex].SetActive(true);
+    }
+
+    private void CheckProgress() {
+        PlayerDataHandler handler = FindObjectOfType<PlayerDataHandler>();
+
+        if (handler.currentPlayerData.correctAttemptAmount_EE > 0) EnableCheckMark(0);
+        if (handler.currentPlayerData.correctAttemptAmount_EA > 0) EnableCheckMark(1);
+        if (handler.currentPlayerData.correctAttemptAmount_EI > 0) EnableCheckMark(2);
+        if (handler.currentPlayerData.correctAttemptAmount_EP > 0) EnableCheckMark(3);
+        if (handler.currentPlayerData.correctAttemptAmount_ME > 0) EnableCheckMark(4);
+        if (handler.currentPlayerData.correctAttemptAmount_MA > 0) EnableCheckMark(5);
+        if (handler.currentPlayerData.correctAttemptAmount_MI > 0) EnableCheckMark(6);
+        if (handler.currentPlayerData.correctAttemptAmount_MP > 0) EnableCheckMark(7);
+        if (handler.currentPlayerData.correctAttemptAmount_HE > 0) EnableCheckMark(8);
+        if (handler.currentPlayerData.correctAttemptAmount_HA > 0) EnableCheckMark(9);
+        if (handler.currentPlayerData.correctAttemptAmount_HI > 0) EnableCheckMark(10);
+        if (handler.currentPlayerData.correctAttemptAmount_HP > 0) EnableCheckMark(11);
     }
 }

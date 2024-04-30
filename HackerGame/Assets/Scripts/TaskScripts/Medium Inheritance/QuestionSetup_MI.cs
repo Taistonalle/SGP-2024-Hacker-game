@@ -229,6 +229,7 @@ public class QuestionSetup_MI : MonoBehaviour
             foreach (GameObject objekti in objectsToHide) objekti.SetActive(false);
             yield return new WaitForSeconds(messageTimeOnTerminal);
             UpdateTaskData(true);
+            FindObjectOfType<PlayerDataHandler>().LocalSaveData(); //Placeholder
             Destroy(gameObject);
             break;
 
@@ -241,6 +242,7 @@ public class QuestionSetup_MI : MonoBehaviour
             terminalQuestionTxt.text = oldQuestionTxt;
             UpdateTaskData(false);
             ResetAttemptData();
+            FindObjectOfType<PlayerDataHandler>().LocalSaveData(); //Placeholder
             foreach (GameObject objekti in objectsToHide) objekti.SetActive(true);
             break;
         }

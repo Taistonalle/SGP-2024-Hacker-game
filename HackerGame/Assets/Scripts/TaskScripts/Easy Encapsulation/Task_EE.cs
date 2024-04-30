@@ -140,6 +140,7 @@ public class Task_EE : MonoBehaviour {
             foreach (GameObject block in blocks) block.SetActive(false);
             yield return new WaitForSeconds(messageTimeOnTerminal);
             UpdateTaskData(true);
+            FindObjectOfType<PlayerDataHandler>().LocalSaveData(); //Placeholder
             Destroy(gameObject);
             break;
 
@@ -150,6 +151,7 @@ public class Task_EE : MonoBehaviour {
             foreach (GameObject slot in slots) slot.SetActive(true);
             UpdateTaskData(false);
             ResetAttemptData();
+            FindObjectOfType<PlayerDataHandler>().LocalSaveData(); //Placeholder
             break;
         }
     }

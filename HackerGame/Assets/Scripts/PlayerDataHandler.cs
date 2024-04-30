@@ -75,6 +75,9 @@ public class PlayerDataHandler : MonoBehaviour {
     //"Assets\Scripts\DatabaseScipts\LoginManager.cs(66,31): error CS0122: 'PlayerDataHandler.currentPlayerData' is inaccessible due to its protection level"
     public PlayerData currentPlayerData;
 
+    private void Awake() {
+        LoadData(); //Placeholder
+    }
 
     //NEW PART OF SAVE SAVEDATA() -Teemu H
     public void SaveData() {
@@ -176,6 +179,16 @@ public class PlayerDataHandler : MonoBehaviour {
     //         // ... copy data from loadedData to currentPlayerData ...
     //     }
     // }
+
+    //----This is for testing purposes mainly----
+    public void LocalSaveData() {
+        string json = JsonUtility.ToJson(currentPlayerData, true);
+        string path = Path.Combine(Application.persistentDataPath, "currentPlayerData.json");
+
+        File.WriteAllText(path, json);
+    }
+    //---End of testing purpose functions----
+
     public void LoadData() {
         string path = Path.Combine(Application.persistentDataPath, "currentPlayerData.json");
         string json = File.ReadAllText(path);
@@ -201,11 +214,21 @@ public class PlayerDataHandler : MonoBehaviour {
         currentPlayerData.task_EP_data = loadedData.task_EP_data;
         currentPlayerData.correctAttemptAmount_EP = loadedData.correctAttemptAmount_EP;
 
-        //Implement medium sheets
-
-        //Hard HI
-        currentPlayerData.task_HI_data = loadedData.task_HI_data;
-        currentPlayerData.correctAttemptAmount_HI = loadedData.correctAttemptAmount_HI;
+        //Medium ME
+        currentPlayerData.task_ME_data = loadedData.task_ME_data;
+        currentPlayerData.correctAttemptAmount_ME = loadedData.correctAttemptAmount_ME;
+        
+        //Medium MA
+        currentPlayerData.task_MA_data = loadedData.task_MA_data;
+        currentPlayerData.correctAttemptAmount_MA = loadedData.correctAttemptAmount_MA;
+        
+        //Medium MI
+        currentPlayerData.task_MI_data = loadedData.task_MI_data;
+        currentPlayerData.correctAttemptAmount_MI = loadedData.correctAttemptAmount_MI;
+        
+        //Medium MP
+        currentPlayerData.task_MP_data = loadedData.task_MP_data;
+        currentPlayerData.correctAttemptAmount_MP = loadedData.correctAttemptAmount_MP;
 
         //Hard HE
         currentPlayerData.task_HE_data = loadedData.task_HE_data;
@@ -214,6 +237,10 @@ public class PlayerDataHandler : MonoBehaviour {
         //Hard HA
         currentPlayerData.task_HA_data = loadedData.task_HA_data;
         currentPlayerData.correctAttemptAmount_HA = loadedData.correctAttemptAmount_HA;
+
+        //Hard HI
+        currentPlayerData.task_HI_data = loadedData.task_HI_data;
+        currentPlayerData.correctAttemptAmount_HI = loadedData.correctAttemptAmount_HI;
 
         //Hard HP
         currentPlayerData.task_HP_data = loadedData.task_HP_data;

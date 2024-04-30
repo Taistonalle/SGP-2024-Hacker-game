@@ -120,6 +120,7 @@ public class Task_HA : Task_HI {
             case true:
             handler.currentPlayerData.task_HA_data.Add(currentData);
             handler.currentPlayerData.correctAttemptAmount_HA++;
+            gameManager.EnableCheckMark(9);
             break;
 
             case false:

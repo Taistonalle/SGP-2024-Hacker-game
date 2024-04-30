@@ -22,6 +22,7 @@ public struct Hard_Task_Data {
 }
 
 public class Task_HI : MonoBehaviour {
+    protected GameManager gameManager;
     [SerializeField] protected TMP_InputField[] inputFields;
     [SerializeField] protected TextMeshProUGUI terminalTxt;
     [SerializeField] protected float messageTimeOnTerminal;
@@ -43,6 +44,7 @@ public class Task_HI : MonoBehaviour {
     [SerializeField] protected Hard_Task_Data data;
 
     protected void Start() {
+        gameManager = FindObjectOfType<GameManager>();
         GetFieldDatasInfo();
         try {
             GetTaskAttemptData();
@@ -221,6 +223,7 @@ public class Task_HI : MonoBehaviour {
             case true:
             handler.currentPlayerData.task_HI_data.Add(currentData);
             handler.currentPlayerData.correctAttemptAmount_HI++;
+            gameManager.EnableCheckMark(10);
             break;
 
             case false:
@@ -259,6 +262,7 @@ public class Task_HI : MonoBehaviour {
             foreach (TMP_InputField field in inputFields) field.gameObject.SetActive(false);
             yield return new WaitForSeconds(messageTimeOnTerminal);
             UpdateTaskData(true);
+            FindObjectOfType<PlayerDataHandler>().LocalSaveData(); //Placeholder
             Destroy(gameObject);
             break;
 
@@ -270,6 +274,7 @@ public class Task_HI : MonoBehaviour {
             UpdateTaskData(false);
             ResetAttemptData();
             CheckIfHintButtonShouldBeShown(3);
+            FindObjectOfType<PlayerDataHandler>().LocalSaveData(); //Placeholder
             break;
         }
     }
