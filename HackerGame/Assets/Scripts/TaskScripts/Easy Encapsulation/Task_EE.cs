@@ -120,6 +120,7 @@ public class Task_EE : MonoBehaviour {
             handler.currentPlayerData.task_EE_data.Add(currentData);
             handler.currentPlayerData.correctAttemptAmount_EE++;
             gameManager.EnableCheckMark(0);
+            gameManager.UnlockFolder(0);
             break;
 
             case false:

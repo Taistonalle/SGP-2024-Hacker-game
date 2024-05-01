@@ -209,6 +209,7 @@ public class QuestionSetup_MI : MonoBehaviour
             handler.currentPlayerData.task_MI_data.Add(currentData);
             handler.currentPlayerData.correctAttemptAmount_MI++;
             gameManager.EnableCheckMark(6);
+            gameManager.UnlockFolder(6);
             break;
 
             case false:

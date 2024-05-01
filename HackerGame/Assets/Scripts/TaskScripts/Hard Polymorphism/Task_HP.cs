@@ -138,7 +138,8 @@ public class Task_HP : Task_HI
             case true:
                 handler.currentPlayerData.task_HP_data.Add(currentData);
                 handler.currentPlayerData.correctAttemptAmount_HP++;
-                break;
+                gameManager.EnableCheckMark(11);
+            break;
 
             case false:
                 handler.currentPlayerData.task_HP_data.Add(currentData);

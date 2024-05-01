@@ -14,6 +14,7 @@ public class Task_EP : Task_EE
                 handler.currentPlayerData.task_EP_data.Add(currentData);
                 handler.currentPlayerData.correctAttemptAmount_EP++;
                 gameManager.EnableCheckMark(3);
+                gameManager.UnlockFolder(3);
             break;
 
             case false:

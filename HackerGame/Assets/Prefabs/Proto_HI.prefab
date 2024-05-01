@@ -343,7 +343,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -162, y: -495}
+  m_AnchoredPosition: {x: -200, y: -400}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4373995781678503220
@@ -881,8 +881,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -400, y: 18.8}
-  m_SizeDelta: {x: 640, y: 980}
+  m_AnchoredPosition: {x: -400, y: 30}
+  m_SizeDelta: {x: 640, y: 950}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2994860188938533971
 CanvasRenderer:
@@ -1381,7 +1381,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -14.2}
+  m_AnchoredPosition: {x: 0, y: -25}
   m_SizeDelta: {x: 550, y: 920}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2352689600907778657
@@ -2563,7 +2563,7 @@ MonoBehaviour:
   - {fileID: 5883983522201787839}
   terminalTxt: {fileID: 3755487217670250056}
   messageTimeOnTerminal: 3
-  correctMessage: Correct! Well done! Unhacking new folder...
+  correctMessage: Correct! Well done! Unhacking...
   wrongMessage: Incorrect! Try again.
   notePadTxt: {fileID: 4683634792944691521}
   hintButton: {fileID: 3625550366698173709}
@@ -3161,7 +3161,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -140, y: 475}
+  m_AnchoredPosition: {x: -140, y: 462}
   m_SizeDelta: {x: 300, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &503690627184451762

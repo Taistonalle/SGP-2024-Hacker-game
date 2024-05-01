@@ -13,6 +13,7 @@ public class Task_EI : Task_EE
             handler.currentPlayerData.task_EI_data.Add(currentData);
             handler.currentPlayerData.correctAttemptAmount_EI++;
             gameManager.EnableCheckMark(2);
+            gameManager.UnlockFolder(2);
             break;
 
             case false:

@@ -13,6 +13,7 @@ public class Task_EA : Task_EE {
             handler.currentPlayerData.task_EA_data.Add(currentData);
             handler.currentPlayerData.correctAttemptAmount_EA++;
             gameManager.EnableCheckMark(1);
+            gameManager.UnlockFolder(1);
             break;
 
             case false:

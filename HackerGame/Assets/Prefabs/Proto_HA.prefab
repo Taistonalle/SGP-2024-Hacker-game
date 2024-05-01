@@ -3247,7 +3247,7 @@ MonoBehaviour:
   - {fileID: 2230003854359299466}
   terminalTxt: {fileID: 1063949353138166303}
   messageTimeOnTerminal: 3
-  correctMessage: Correct! Well done! Unhacking new folder...
+  correctMessage: Correct! Well done! Unhacking...
   wrongMessage: Incorrect! Try again.
   notePadTxt: {fileID: 3910323950207437065}
   hintButton: {fileID: 6947907633883893731}

@@ -3686,7 +3686,7 @@ GameObject:
   - component: {fileID: 5825659058416714024}
   m_Layer: 0
   m_Name: Proto_HP
-  m_TagString: Untagged
+  m_TagString: Task
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3728,7 +3728,7 @@ MonoBehaviour:
   - {fileID: 6720472143242570007}
   terminalTxt: {fileID: 3435222760930136946}
   messageTimeOnTerminal: 3
-  correctMessage: Correct! Well done! Unhacking new folder...
+  correctMessage: Correct! Well done! Unhacking...
   wrongMessage: Incorrect! Try again.
   notePadTxt: {fileID: 1215923016164112541}
   hintButton: {fileID: 3633589883163747175}
@@ -3737,7 +3737,31 @@ MonoBehaviour:
   data:
     attempt: 0
     correctAmount: 0
-    inputField_datas: []
+    inputField_datas:
+    - fieldName: 
+      description: 
+      whatWasWritten: 
+      wasCorrect: 0
+    - fieldName: 
+      description: 
+      whatWasWritten: 
+      wasCorrect: 0
+    - fieldName: 
+      description: 
+      whatWasWritten: 
+      wasCorrect: 0
+    - fieldName: 
+      description: 
+      whatWasWritten: 
+      wasCorrect: 0
+    - fieldName: 
+      description: 
+      whatWasWritten: 
+      wasCorrect: 0
+    - fieldName: 
+      description: 
+      whatWasWritten: 
+      wasCorrect: 0
 --- !u!1 &6257456501237243419
 GameObject:
   m_ObjectHideFlags: 0
