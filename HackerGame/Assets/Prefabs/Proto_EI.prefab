@@ -449,6 +449,8 @@ MonoBehaviour:
   - {fileID: 3275567122010885989}
   - {fileID: 1971987293134083714}
   - {fileID: 3677958895919686620}
+  - {fileID: 7488608427140129910}
+  - {fileID: 3603991959983076870}
   id: 0
   minDistanceFromSlot: 0
   inCorrectSlot: 0
@@ -821,6 +823,8 @@ MonoBehaviour:
   - {fileID: 3677958895919686620}
   - {fileID: 1971987293134083714}
   - {fileID: 3275567122010885989}
+  - {fileID: 7488608427140129910}
+  - {fileID: 3603991959983076870}
   id: 2
   minDistanceFromSlot: 0
   inCorrectSlot: 0
@@ -1230,6 +1234,8 @@ MonoBehaviour:
   - {fileID: 1971987293134083714}
   - {fileID: 3677958895919686620}
   - {fileID: 3275567122010885989}
+  - {fileID: 7488608427140129910}
+  - {fileID: 3603991959983076870}
   id: 3
   minDistanceFromSlot: 0
   inCorrectSlot: 0
@@ -1510,6 +1516,9 @@ MonoBehaviour:
   possibleSlots:
   - {fileID: 7488608427140129910}
   - {fileID: 3603991959983076870}
+  - {fileID: 3677958895919686620}
+  - {fileID: 1971987293134083714}
+  - {fileID: 3275567122010885989}
   id: 4
   minDistanceFromSlot: 0
   inCorrectSlot: 0
@@ -2683,6 +2692,9 @@ MonoBehaviour:
   possibleSlots:
   - {fileID: 3603991959983076870}
   - {fileID: 7488608427140129910}
+  - {fileID: 3677958895919686620}
+  - {fileID: 1971987293134083714}
+  - {fileID: 3275567122010885989}
   id: 1
   minDistanceFromSlot: 0
   inCorrectSlot: 0
@@ -2716,11 +2728,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3074874200721007543}
   - {fileID: 8777956978992598061}
-  - {fileID: 9052803742583654063}
   - {fileID: 1706841923550000743}
   - {fileID: 6990277502734621368}
-  - {fileID: 3074874200721007543}
+  - {fileID: 9052803742583654063}
   m_Father: {fileID: 7372767641965836403}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
