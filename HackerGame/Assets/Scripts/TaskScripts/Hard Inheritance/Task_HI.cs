@@ -23,6 +23,7 @@ public struct Hard_Task_Data {
 
 public class Task_HI : MonoBehaviour {
     protected GameManager gameManager;
+    protected bool checkActive;
     [SerializeField] protected TMP_InputField[] inputFields;
     [SerializeField] protected TextMeshProUGUI terminalTxt;
     [SerializeField] protected float messageTimeOnTerminal;
@@ -56,6 +57,9 @@ public class Task_HI : MonoBehaviour {
 
     //Call this function from button
     public virtual void CheckAnswer() {
+        //Leave function if checkActive bool is true, else continue check
+        if (checkActive) return;
+        checkActive = true;
         hintNoteCounter++;
 
         //Field 1 checks
@@ -197,6 +201,7 @@ public class Task_HI : MonoBehaviour {
         for (int i = 0; i < data.inputField_datas.Length; i++) data.inputField_datas[i].wasCorrect = false;
         data.correctAmount = 0;
         data.attempt++;
+        checkActive = false;
     }
 
     protected virtual void GetSpecificFieldData(int inputFieldIndex) {

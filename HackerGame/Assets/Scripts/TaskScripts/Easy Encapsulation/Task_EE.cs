@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [System.Serializable]
@@ -26,6 +27,7 @@ public struct Easy_Task_Data {
 
 public class Task_EE : MonoBehaviour {
     protected GameManager gameManager;
+    protected bool checkActive;
     [SerializeField] protected GameObject[] slots, blocks;
     [SerializeField] protected TextMeshProUGUI terminalTxt;
     [SerializeField] protected float messageTimeOnTerminal;
@@ -66,6 +68,10 @@ public class Task_EE : MonoBehaviour {
         }
         */
 
+        //Leave function if checkActive bool is true, else continue check
+        if (checkActive) return;
+        checkActive = true;
+
         //Check for each block if their bool value says they are in correct place. Yes => correctAmount + 1 and mark in data that slot was correct
         for (int i = 0; i < blocks.Length; i++) {
             if (blocks[i].GetComponent<CodeBlock_EE>().inCorrectSlot) {
@@ -97,6 +103,7 @@ public class Task_EE : MonoBehaviour {
         for (int i = 0; i < blocks.Length; ++i) blocks[i].GetComponent<CodeBlock_EE>().inCorrectSlot = false;
         data.correctAmount = 0;
         data.attempt++;
+        checkActive = false;
     }
 
     protected virtual void GetSlotDatasInfo() {

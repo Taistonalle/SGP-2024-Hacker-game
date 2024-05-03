@@ -7,6 +7,9 @@ using UnityEngine;
 public class Task_HE : Task_HI {
 
     public override void CheckAnswer() {
+        //Leave function if checkActive bool is true, else continue check
+        if (checkActive) return;
+        checkActive = true;
         hintNoteCounter++;
 
         //Field 1 check
