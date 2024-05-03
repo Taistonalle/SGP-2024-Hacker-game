@@ -142,6 +142,7 @@ public class Task_EE : MonoBehaviour {
 
         switch (correct) {
             case true:
+            gameManager.soundManager.PlayOneShot(1, true);
             terminalTxt.text = $"{data.correctAmount} out of {slots.Length} were right\nAttempt: {data.attempt}\n" + message;
             Debug.Log("Implement unlocking for harder task");
             foreach (GameObject slot in slots) slot.SetActive(false);
@@ -149,10 +150,12 @@ public class Task_EE : MonoBehaviour {
             yield return new WaitForSeconds(messageTimeOnTerminal);
             UpdateTaskData(true);
             FindObjectOfType<PlayerDataHandler>().LocalSaveData(); //Placeholder
+            gameManager.soundManager.PlayOneShot(2, true);
             Destroy(gameObject);
             break;
 
             case false:
+            gameManager.soundManager.PlayOneShot(0, true);
             terminalTxt.text = $"{data.correctAmount} out of {slots.Length} were right\nAttempt: {data.attempt}\n" + message;
             yield return new WaitForSeconds(messageTimeOnTerminal);
             terminalTxt.text = oldMessage;

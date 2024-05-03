@@ -262,6 +262,7 @@ public class Task_HI : MonoBehaviour {
 
         switch (correct) {
             case true:
+            gameManager.soundManager.PlayOneShot(1, true);
             terminalTxt.text = $"{data.correctAmount} out of {inputFields.Length} were right\nAttempt: {data.attempt}\n" + message;
             Debug.Log("Implement unlocking for harder task");
             foreach (TMP_InputField field in inputFields) field.gameObject.SetActive(false);
@@ -272,6 +273,7 @@ public class Task_HI : MonoBehaviour {
             break;
 
             case false:
+            gameManager.soundManager.PlayOneShot(0, true);
             terminalTxt.text = $"{data.correctAmount} out of {inputFields.Length} were right\nAttempt: {data.attempt}\n" + message;
             yield return new WaitForSeconds(messageTimeOnTerminal);
             terminalTxt.text = oldMessage;

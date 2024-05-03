@@ -225,16 +225,19 @@ public class QuestionSetup_MI : MonoBehaviour
 
         switch (correct) {
             case true:
+            gameManager.soundManager.PlayOneShot(1, true);
             terminalQuestionHeader.text = "Result";
             terminalQuestionTxt.text = $"{data.correctAmount} out of {persistentQuestionCount} were right\nAttempt: {data.attempt}\n" + message;
             foreach (GameObject objekti in objectsToHide) objekti.SetActive(false);
             yield return new WaitForSeconds(messageTimeOnTerminal);
+            gameManager.soundManager.PlayOneShot(2, true);
             UpdateTaskData(true);
             FindObjectOfType<PlayerDataHandler>().LocalSaveData(); //Placeholder
             Destroy(gameObject);
             break;
 
             case false:
+            gameManager.soundManager.PlayOneShot(0, true);
             terminalQuestionHeader.text = "Result";
             terminalQuestionTxt.text = $"{data.correctAmount} out of {persistentQuestionCount} were right\nAttempt: {data.attempt}\n" + message;
             foreach (GameObject objekti in objectsToHide) objekti.SetActive(false);

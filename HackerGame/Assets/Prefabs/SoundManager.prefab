@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6334355345793203998
+--- !u!1 &4597245383184114792
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 24124835498097896}
-  - component: {fileID: 7848393346078518246}
-  - component: {fileID: 3665356242929709416}
+  - component: {fileID: 2631275080074121002}
+  - component: {fileID: 6639356458642463053}
+  - component: {fileID: 3693027539466752806}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: SoundManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &24124835498097896
+--- !u!4 &2631275080074121002
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6334355345793203998}
+  m_GameObject: {fileID: 4597245383184114792}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -33,63 +33,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7848393346078518246
+--- !u!114 &6639356458642463053
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6334355345793203998}
+  m_GameObject: {fileID: 4597245383184114792}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1992758f806a1c245b8ee500c22b8948, type: 3}
+  m_Script: {fileID: 11500000, guid: 8b091dee24a0e2a48a24bfd551943ea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mark:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  folderButton:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  hackedImage:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  soundManager: {fileID: 0}
---- !u!82 &3665356242929709416
+  taskWrong: {fileID: 8300000, guid: b2600354e1f3e9f4685f6a8513791e82, type: 3}
+  taskCorrect: {fileID: 8300000, guid: e54b62163291e834ab3a3b9fc309b59e, type: 3}
+  folderUnhacked: {fileID: 8300000, guid: a13d4f399c9330441a08a4e2c4dba4d9, type: 3}
+  clickSound: {fileID: 8300000, guid: 127b65cf7e4dec64f9f593da5efc428d, type: 3}
+  powerOff: {fileID: 8300000, guid: a13d4f399c9330441a08a4e2c4dba4d9, type: 3}
+--- !u!82 &3693027539466752806
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6334355345793203998}
+  m_GameObject: {fileID: 4597245383184114792}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

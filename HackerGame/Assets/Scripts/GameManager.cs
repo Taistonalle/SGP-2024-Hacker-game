@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour {
     /*
@@ -35,8 +36,15 @@ public class GameManager : MonoBehaviour {
     [Header("Hacked folder images")]
     [SerializeField] Image[] hackedImage;
 
+    public SoundManager soundManager;
+
     void Start() {
         CheckProgress();
+        soundManager = FindObjectOfType<SoundManager>();
+    }
+
+    void Update() {
+        if (Input.GetMouseButtonDown(0)) soundManager.PlayClickSound(0.05f);
     }
 
     public void LoadPrefab(GameObject prefabToLoad) {
@@ -49,6 +57,7 @@ public class GameManager : MonoBehaviour {
 
     public void ScreenPowerButton() {
         Debug.Log("Implement returning back to login screen?");
+        soundManager.PlayOneShot(4, false);
         Application.Quit(); //For now just quit
     }
 
@@ -117,4 +126,5 @@ public class GameManager : MonoBehaviour {
         folderButton[folderIndex].enabled = true;
         hackedImage[folderIndex].material = null;
     }
+   
 }
