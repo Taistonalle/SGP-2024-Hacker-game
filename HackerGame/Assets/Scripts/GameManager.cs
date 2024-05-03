@@ -52,32 +52,48 @@ public class GameManager : MonoBehaviour {
         Application.Quit(); //For now just quit
     }
 
-    public void EnableCheckMark(int markIndex) {
+    public void EnableCheckMark(int markIndex) { //Index is seen from the inspector array. Semi hard coded like this, it is what it is.
         mark[markIndex].SetActive(true);
     }
 
     private void CheckProgress() {
         PlayerDataHandler handler = FindObjectOfType<PlayerDataHandler>();
 
-        if (handler.currentPlayerData.correctAttemptAmount_EE > 0) EnableCheckMark(0);
-        if (handler.currentPlayerData.correctAttemptAmount_EA > 0) EnableCheckMark(1);
-        if (handler.currentPlayerData.correctAttemptAmount_EI > 0) EnableCheckMark(2);
-        if (handler.currentPlayerData.correctAttemptAmount_EP > 0) EnableCheckMark(3);
+        if (handler.currentPlayerData.correctAttemptAmount_EE > 0) {
+            EnableCheckMark(0);
+            UnlockFolder(0);
+        }
+        if (handler.currentPlayerData.correctAttemptAmount_EA > 0) {
+            EnableCheckMark(1);
+            UnlockFolder(1);
+        }
+        if (handler.currentPlayerData.correctAttemptAmount_EI > 0) {
+            EnableCheckMark(2);
+            UnlockFolder(2);
+        }
+        if (handler.currentPlayerData.correctAttemptAmount_EP > 0) {
+            EnableCheckMark(3);
+            UnlockFolder(3);
+        }
         if (handler.currentPlayerData.correctAttemptAmount_ME > 0) {
             EnableCheckMark(4);
             UnlockFolder(0);
+            UnlockFolder(4);
         }
         if (handler.currentPlayerData.correctAttemptAmount_MA > 0) {
             EnableCheckMark(5);
             UnlockFolder(1);
+            UnlockFolder(5);
         }
         if (handler.currentPlayerData.correctAttemptAmount_MI > 0) {
             EnableCheckMark(6);
             UnlockFolder(2);
+            UnlockFolder(6);
         }
         if (handler.currentPlayerData.correctAttemptAmount_MP > 0) {
             EnableCheckMark(7);
             UnlockFolder(3);
+            UnlockFolder(7);
         }
         if (handler.currentPlayerData.correctAttemptAmount_HE > 0) {
             EnableCheckMark(8);
@@ -97,7 +113,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public void UnlockFolder(int folderIndex) {
+    public void UnlockFolder(int folderIndex) { //Again, index is seen from inspector array.
         folderButton[folderIndex].enabled = true;
         hackedImage[folderIndex].material = null;
     }

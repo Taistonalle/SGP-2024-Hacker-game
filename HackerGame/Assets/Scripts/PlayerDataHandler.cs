@@ -77,7 +77,7 @@ public class PlayerDataHandler : MonoBehaviour {
 
     private void Awake() {
         try {
-            //LoadData(); //Placeholder
+            LoadData(); //Placeholder
         } catch {
             Debug.Log("No JSON data yet. Continuing as normal");
         }
