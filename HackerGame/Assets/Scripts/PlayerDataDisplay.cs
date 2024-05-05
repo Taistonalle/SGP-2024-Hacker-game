@@ -38,13 +38,30 @@ public class PlayerDataDisplay : MonoBehaviour
 
         // Add task_EE_data
         sb.AppendLine("\nTask EE Data:");
+        /* Old loop
         foreach (var taskData in playerData.task_EE_data)
         {
             sb.AppendLine(taskData.ToString()); // This assumes that you have a suitable ToString method in your Easy_Task_Data class
         }
+        */
+        //Loop through all the task_EE_datas
+        for (int i = 0; i < playerData.task_EE_data.Count; i++) {
+            string attemptData = $"Attempt: {playerData.task_EE_data[i].attempt}" +
+                                 $"\nCorrect amount: {playerData.task_EE_data[i].correctAmount}";
+            
+            //In the current task EE data, loop through it's slot data array
+            foreach (Slot_Data slot in playerData.task_EE_data[i].slot_datas) {
+                attemptData += $"\nSlot name: {slot.slotName}" +
+                               $"\nDescription: {slot.description}" +
+                               $"\nWas correct: {slot.wasCorrect}";
+            }
+            sb.AppendLine(attemptData);
+            sb.AppendLine(); //Empty line after each attempt
+        }
+        //sb.AppendLine(attemptData);
 
         // Add easy-level data
-        
+
         // sb.AppendLine($"Correct Attempt Amount (Encapsulation): {playerData.correctAttemptAmount_EE}");
         // sb.AppendLine($"Correct Attempt Amount (Abstraction): {playerData.correctAttemptAmount_EA}");
         // sb.AppendLine($"Correct Attempt Amount (Inheritance): {playerData.correctAttemptAmount_EI}");
