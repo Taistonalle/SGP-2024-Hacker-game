@@ -404,8 +404,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 4
   slotData:
-    slotName: 
-    description: 
+    slotName: WriteLine
+    description: Console command
     wasCorrect: 0
 --- !u!1 &534236851693666664
 GameObject:
@@ -1181,8 +1181,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   slotData:
-    slotName: 
-    description: 
+    slotName: override
+    description: Override function modification
     wasCorrect: 0
 --- !u!1 &3189758276520249948
 GameObject:
@@ -1497,8 +1497,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   slotData:
-    slotName: 
-    description: 
+    slotName: virtual
+    description: Modifier for function
     wasCorrect: 0
 --- !u!1 &4304577971170775262
 GameObject:
@@ -2550,8 +2550,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 3
   slotData:
-    slotName: 
-    description: 
+    slotName: new_Cat();
+    description: New animal object for animal array
     wasCorrect: 0
 --- !u!1 &6741600578915793250
 GameObject:
@@ -3410,8 +3410,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 6
   slotData:
-    slotName: 
-    description: 
+    slotName: animal
+    description: Foreach loop item name
     wasCorrect: 0
 --- !u!1 &7820421258919201671
 GameObject:
@@ -4067,8 +4067,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   slotData:
-    slotName: 
-    description: 
+    slotName: animals
+    description: Name of the animal array
     wasCorrect: 0
 --- !u!1 &8919435254633946523
 GameObject:
