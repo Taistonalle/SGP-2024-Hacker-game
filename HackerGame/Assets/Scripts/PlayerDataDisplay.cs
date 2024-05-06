@@ -17,6 +17,7 @@ public class PlayerDataDisplay : MonoBehaviour
             return;
         }
 
+        playerDataHandler = FindObjectOfType<PlayerDataHandler>();
         ShowPlayerData();
     }
 
