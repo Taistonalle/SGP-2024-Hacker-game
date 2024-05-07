@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Collections;
 using System.IO;
 using System;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 public class PlayerDataDisplay : MonoBehaviour
 {
@@ -176,11 +178,28 @@ public class PlayerDataDisplay : MonoBehaviour
         Destroy(tex);
 
         //Write the returned byte array to a file in desktop
-        File.WriteAllBytes(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), $"Hack the Hacker report - {playerDataHandler.currentPlayerData.userName} {DateTime.Now}.png"), bytes);
+        //File.WriteAllBytes(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), $"Hack the Hacker report - {playerDataHandler.currentPlayerData.userName} {DateTime.Now}.png"), bytes); //Screenshot
 
         //Text file part
-        File.WriteAllText(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), $"Hack the Hacker report - {playerDataHandler.currentPlayerData.userName} {DateTime.Now}.txt"), sb.ToString());
+        //File.WriteAllText(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), $"Hack the Hacker report - {playerDataHandler.currentPlayerData.userName} {DateTime.Now}.txt"), sb.ToString()); //Works
 
+        //----Pdf----
+        Document document = new();
+
+        string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), $"Hack the Hacker report - {playerDataHandler.currentPlayerData.userName} {DateTime.Now}.pdf");
+
+        // Create a PdfWriter instance to write the document to the specified file
+        PdfWriter.GetInstance(document, new FileStream(filePath, FileMode.Create));
+
+        // Open the document for writing
+        document.Open();
+
+        // Add content to the document
+        document.Add(new Paragraph(sb.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 18)));
+
+        // Close the document
+        document.Close();
+        //----End of pdf---
     }
 }
 
