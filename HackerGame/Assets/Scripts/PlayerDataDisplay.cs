@@ -85,6 +85,19 @@ public class PlayerDataDisplay : MonoBehaviour
         }
     }
 
+    private void DisplayTaskData(StringBuilder sb, List<Medium_Task_Data> taskDataList) {
+        for (int i = 0; i < taskDataList.Count;i++) {
+            string attemptData = $"Attempt: {taskDataList[i].attempt}" +
+                                 $"\nCorrect amount: {taskDataList[i].correctAmount}";
+
+            foreach (QuestionSelectionData question in taskDataList[i].questionData) {
+                attemptData += $"\nQuestion: {question.question}" +
+                               $"\nWhat was selected: {question.whatWasSelected}";
+            }
+
+        }
+    }
+
     // private void ShowPlayerData()
     // {
     //     // Get current player data
@@ -153,9 +166,9 @@ public class PlayerDataDisplay : MonoBehaviour
         yield return new WaitForEndOfFrame();
 
         //Create a texture in RGB format the size of the screen
-        int width = Screen.width;
-        int height = Screen.height;
-        Texture2D tex = new(width, height, TextureFormat.RGB24, false);
+        //int width = Screen.width;
+        //int height = Screen.height;
+        //Texture2D tex = new(width, height, TextureFormat.RGB24, false);
 
         /*
         //Custom testing with picture size, works
@@ -170,12 +183,12 @@ public class PlayerDataDisplay : MonoBehaviour
         var noteRect = notepad.GetComponent<RectTransform>().rect;
         tex.ReadPixels(new Rect(100, 20, width, height), 0, 0);
         */
-        tex.ReadPixels(new Rect(0, 0, width, height), 0, 0);
-        tex.Apply();
+        //tex.ReadPixels(new Rect(0, 0, width, height), 0, 0);
+        //tex.Apply();
         
         //Encode the texture in PNG format
-        byte[] bytes = tex.EncodeToPNG();
-        Destroy(tex);
+        //byte[] bytes = tex.EncodeToPNG();
+        //Destroy(tex);
 
         //Write the returned byte array to a file in desktop
         //File.WriteAllBytes(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), $"Hack the Hacker report - {playerDataHandler.currentPlayerData.userName} {DateTime.Now}.png"), bytes); //Screenshot
@@ -185,8 +198,25 @@ public class PlayerDataDisplay : MonoBehaviour
 
         //----Pdf----
         Document document = new();
+        string filePath = "";
+        //Check if platform is Windows or Mac
+        switch (Application.platform) {
+            //Mac
+            case RuntimePlatform.OSXPlayer:
+            filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "Desktop", $"Hack the Hacker report - {playerDataHandler.currentPlayerData.userName} {DateTime.Now}.pdf");
+            break;
+            case RuntimePlatform.OSXEditor:
+            filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "Desktop", $"Hack the Hacker report - {playerDataHandler.currentPlayerData.userName} {DateTime.Now}.pdf");
+            break;
 
-        string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), $"Hack the Hacker report - {playerDataHandler.currentPlayerData.userName} {DateTime.Now}.pdf");
+            //Windows
+            case RuntimePlatform.WindowsPlayer:
+            filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), $"Hack the Hacker report - {playerDataHandler.currentPlayerData.userName} {DateTime.Now}.pdf");
+            break;
+            case RuntimePlatform.WindowsEditor:
+            filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), $"Hack the Hacker report - {playerDataHandler.currentPlayerData.userName} {DateTime.Now}.pdf");
+            break;
+        }
 
         // Create a PdfWriter instance to write the document to the specified file
         PdfWriter.GetInstance(document, new FileStream(filePath, FileMode.Create));
