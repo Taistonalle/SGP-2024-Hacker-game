@@ -131,8 +131,10 @@ public class PlayerDataHandler : MonoBehaviour {
         // Parse the file content back into a PlayerData object.
         PlayerData playerData = JsonUtility.FromJson<PlayerData>(fileContent);
 
+        string username = Username_Inputfield.text;
+
         // The URL should include the document ID/Player at the end.
-        string url = "http://admin:hackergame2024!@44.211.154.174:5984/playerdata/defaultplayer"; //Note to everyone: make sure the password is not pushed to git! 
+        string url = $"http://admin:hackergame2024!@44.211.154.174:5984/playerdata/{username}"; //Note to everyone: make sure the password is not pushed to git! 
 
         // Send a GET request to the document's URL to retrieve the current _rev value.
         UnityWebRequest getReq = UnityWebRequest.Get(url);
