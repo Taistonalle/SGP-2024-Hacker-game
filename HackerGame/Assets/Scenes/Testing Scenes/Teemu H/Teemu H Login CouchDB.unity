@@ -2074,8 +2074,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1932617545}
-        m_TargetAssemblyTypeName: CheckUserExistence, Assembly-CSharp
+      - m_Target: {fileID: 1932617546}
+        m_TargetAssemblyTypeName: PlayerDataHandler, Assembly-CSharp
         m_MethodName: CheckUsername
         m_Mode: 1
         m_Arguments:
@@ -3746,6 +3746,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerDataHandler
       objectReference: {fileID: 0}
+    - target: {fileID: 1625064974528148877, guid: 5d928b71600a61d42bddec06b2b3dc14,
+        type: 3}
+      propertyPath: Email_Inputfield
+      value: 
+      objectReference: {fileID: 1155523687}
+    - target: {fileID: 1625064974528148877, guid: 5d928b71600a61d42bddec06b2b3dc14,
+        type: 3}
+      propertyPath: Username_Inputfield
+      value: 
+      objectReference: {fileID: 739665494}
     - target: {fileID: 2303188482398316063, guid: 5d928b71600a61d42bddec06b2b3dc14,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3803,7 +3813,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1083445206812364282, guid: 5d928b71600a61d42bddec06b2b3dc14,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1932617545}
+      addedObject: {fileID: 1932617548}
   m_SourcePrefab: {fileID: 100100000, guid: 5d928b71600a61d42bddec06b2b3dc14, type: 3}
 --- !u!1 &1602897497
 GameObject:
@@ -4558,7 +4568,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1588012035}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1932617545
+--- !u!114 &1932617546 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1625064974528148877, guid: 5d928b71600a61d42bddec06b2b3dc14,
+    type: 3}
+  m_PrefabInstance: {fileID: 1588012035}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932617544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 384e4f3bfa30e4743b0c124f9d95a210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1932617548
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4567,10 +4589,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1932617544}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8662e15f4352541b2a951b9c27f3f7ba, type: 3}
+  m_Script: {fileID: 11500000, guid: 0de6bd17d841f4d7fa238d1a5dc96e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Username_Inputfield: {fileID: 739665494}
 --- !u!1 &1965333056
 GameObject:
   m_ObjectHideFlags: 0

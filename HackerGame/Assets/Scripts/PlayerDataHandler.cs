@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using UnityEngine.Networking; // NEW ADDITION -Teemu H
+using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerDataHandler : MonoBehaviour {
     /* Documentation used for this script
@@ -71,9 +73,7 @@ public class PlayerDataHandler : MonoBehaviour {
     }
 
     //Data seen from the Unity inspector
-    // I changed this from private to public because protection level -Teemu H
-    //"Assets\Scripts\DatabaseScipts\LoginManager.cs(66,31): error CS0122: 'PlayerDataHandler.currentPlayerData' is inaccessible due to its protection level"
-    public PlayerData currentPlayerData;
+    public PlayerData currentPlayerData; //I changed this from private to public because protection level -Teemu H
 
     private void Awake() {
         try {
@@ -83,7 +83,39 @@ public class PlayerDataHandler : MonoBehaviour {
         }
     }
 
-    //NEW PART OF SAVE SAVEDATA() -Teemu H
+    // Login things for usernamecheck - Teemu h
+
+     public TMP_InputField Username_Inputfield;
+     public TMP_InputField Email_Inputfield;
+
+        public void CheckUsername()
+    {
+        StartCoroutine(CheckUsernameCoroutine());
+    }
+    private IEnumerator CheckUsernameCoroutine()
+    {
+        string username = Username_Inputfield.text;
+        string email = Email_Inputfield.text; // Get email from input field
+        string url = $"http://admin:hackergame2024!@44.211.154.174:5984/playerdata/{username}";
+
+        UnityWebRequest getReq = UnityWebRequest.Get(url);
+        yield return getReq.SendWebRequest();
+
+        if (getReq.result != UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Username doesn't exist");
+        }
+        else
+        {
+            Debug.Log("Username exists");
+            currentPlayerData.userName = username; // Save username to PlayerData
+            currentPlayerData.email = email; // Save email to PlayerData
+            SaveData(); // Save PlayerData
+            SceneManager.LoadScene("Teemu H Progression"); // Load new scene
+        }
+    }
+
+    //Save data to the json file and send it to the server
     public void SaveData() {
         string json = JsonUtility.ToJson(currentPlayerData, true);
         string path = Path.Combine(Application.persistentDataPath, "currentPlayerData.json");
@@ -100,7 +132,7 @@ public class PlayerDataHandler : MonoBehaviour {
         PlayerData playerData = JsonUtility.FromJson<PlayerData>(fileContent);
 
         // The URL should include the document ID/Player at the end.
-        string url = "http://admin:KUMMALLINENSALASANA@44.211.154.174:5984/playerdata/defaultplayer"; //Note to everyone: make sure the password is not pushed to git! 
+        string url = "http://admin:hackergame2024!@44.211.154.174:5984/playerdata/defaultplayer"; //Note to everyone: make sure the password is not pushed to git! 
 
         // Send a GET request to the document's URL to retrieve the current _rev value.
         UnityWebRequest getReq = UnityWebRequest.Get(url);

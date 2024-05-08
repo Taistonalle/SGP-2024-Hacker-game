@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Testing Scenes/Teemu K.unity
     guid: 316fd9a17b1b86742aaeb0e9454483a0
+  - enabled: 1
+    path: Assets/Scenes/Testing Scenes/Teemu H/Teemu H Login CouchDB.unity
+    guid: 9a0fdfcc8b68f407ea644ad3b12f9541
+  - enabled: 1
+    path: Assets/Scenes/Testing Scenes/Teemu H/Teemu H Progression.unity
+    guid: c7f0ae4733cb2a8408d06a61bf057158
   m_configObjects: {}

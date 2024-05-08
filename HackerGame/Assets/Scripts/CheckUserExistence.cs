@@ -16,7 +16,7 @@ public class CheckUserExistence : MonoBehaviour
     private IEnumerator CheckUsernameCoroutine()
     {
         string username = Username_Inputfield.text;
-        string url = $"http://admin:TOSIHIMMEESALASANA@44.211.154.174:5984/playerdata/{username}";
+        string url = $"http://admin:hackergame2024!@44.211.154.174:5984/playerdata/{username}";
 
         UnityWebRequest getReq = UnityWebRequest.Get(url);
         yield return getReq.SendWebRequest();
