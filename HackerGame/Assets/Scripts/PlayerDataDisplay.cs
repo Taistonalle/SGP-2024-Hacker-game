@@ -92,7 +92,8 @@ public class PlayerDataDisplay : MonoBehaviour
 
             foreach (QuestionSelectionData question in taskDataList[i].questionData) {
                 attemptData += $"\nQuestion: {question.question}" +
-                               $"\nWhat was selected: {question.whatWasSelected}";
+                               $"\nWhat was selected: {question.whatWasSelected}" +
+                               $"\nWas correct: {question.wasCorrect}";
             }
 
         }
@@ -203,10 +204,10 @@ public class PlayerDataDisplay : MonoBehaviour
         switch (Application.platform) {
             //Mac
             case RuntimePlatform.OSXPlayer:
-            filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "Desktop", $"Hack the Hacker report - {playerDataHandler.currentPlayerData.userName} {DateTime.Now}.pdf");
+            filePath = Path.Combine(Application.persistentDataPath, $"Hack the Hacker report - {playerDataHandler.currentPlayerData.userName} {DateTime.Now}.pdf");
             break;
             case RuntimePlatform.OSXEditor:
-            filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "Desktop", $"Hack the Hacker report - {playerDataHandler.currentPlayerData.userName} {DateTime.Now}.pdf");
+            filePath = Path.Combine(Application.persistentDataPath, $"Hack the Hacker report - {playerDataHandler.currentPlayerData.userName} {DateTime.Now}.pdf");
             break;
 
             //Windows
