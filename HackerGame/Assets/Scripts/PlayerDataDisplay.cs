@@ -3,11 +3,19 @@ using UnityEngine;
 using UnityEngine.UI; // Use Text for Unity UI
 using TMPro;
 using System.Collections.Generic;
+using System.Collections;
+using System.IO;
+using System;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 public class PlayerDataDisplay : MonoBehaviour
 {
     public TMPro.TextMeshProUGUI displayText;
     public PlayerDataHandler playerDataHandler; // Reference to PlayerDataHandler
+    //[SerializeField] Image notepad; //Teemu K addition
+    readonly StringBuilder sb = new(); //Moved this here - Teemu K
+
 
     private void Start()
     {
@@ -29,7 +37,7 @@ public class PlayerDataDisplay : MonoBehaviour
         PlayerDataHandler.PlayerData playerData = playerDataHandler.currentPlayerData;
 
         // Use a StringBuilder for efficient string manipulation
-        StringBuilder sb = new StringBuilder();
+        //StringBuilder sb = new StringBuilder();
 
         // Add basic information
         sb.AppendLine("Player Data:");
@@ -130,6 +138,68 @@ public class PlayerDataDisplay : MonoBehaviour
     public void CloseWindow(GameObject window)
     {
         window.SetActive(false);
+    }
+
+    public void DestroyWindow(GameObject window) {
+        Destroy(window);
+    }
+
+    public void StartLoadReport() {
+        StartCoroutine(LoadReport());
+    }
+
+    IEnumerator LoadReport() {
+        //Read the screen buffer after rendering is complete
+        yield return new WaitForEndOfFrame();
+
+        //Create a texture in RGB format the size of the screen
+        int width = Screen.width;
+        int height = Screen.height;
+        Texture2D tex = new(width, height, TextureFormat.RGB24, false);
+
+        /*
+        //Custom testing with picture size, works
+        float width = notepad.GetComponent<RectTransform>().rect.xMax;
+        float height = notepad.GetComponent<RectTransform>().rect.yMax;
+        Texture2D tex = new((int)width, (int)height, TextureFormat.RGB24, false);
+        */
+
+        //Read the screen contents into the texture
+        /*
+        //Custom testing with where the shot is taken from screen, did not work
+        var noteRect = notepad.GetComponent<RectTransform>().rect;
+        tex.ReadPixels(new Rect(100, 20, width, height), 0, 0);
+        */
+        tex.ReadPixels(new Rect(0, 0, width, height), 0, 0);
+        tex.Apply();
+        
+        //Encode the texture in PNG format
+        byte[] bytes = tex.EncodeToPNG();
+        Destroy(tex);
+
+        //Write the returned byte array to a file in desktop
+        //File.WriteAllBytes(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), $"Hack the Hacker report - {playerDataHandler.currentPlayerData.userName} {DateTime.Now}.png"), bytes); //Screenshot
+
+        //Text file part
+        //File.WriteAllText(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), $"Hack the Hacker report - {playerDataHandler.currentPlayerData.userName} {DateTime.Now}.txt"), sb.ToString()); //Works
+
+        //----Pdf----
+        Document document = new();
+
+        string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), $"Hack the Hacker report - {playerDataHandler.currentPlayerData.userName} {DateTime.Now}.pdf");
+
+        // Create a PdfWriter instance to write the document to the specified file
+        PdfWriter.GetInstance(document, new FileStream(filePath, FileMode.Create));
+
+        // Open the document for writing
+        document.Open();
+
+        // Add content to the document
+        document.Add(new Paragraph(sb.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 18)));
+
+        // Close the document
+        document.Close();
+        //----End of pdf---
     }
 }
 

@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
+using System.IO;
+using System;
 
 public class GameManager : MonoBehaviour {
     /*
@@ -127,4 +128,28 @@ public class GameManager : MonoBehaviour {
         hackedImage[folderIndex].material = null;
     }
    
+    /*
+    //Test screenshot save
+    IEnumerator ScreenSaveTest() {
+        //Read the screen buffer after rendering is complete
+        yield return new WaitForEndOfFrame();
+
+        //Create a texture in RGB format the size of the screen
+        int width = Screen.width;
+        int height = Screen.height;
+        Texture2D tex = new(width, height, TextureFormat.RGB24, false);
+
+        //Read the screen contents into the texture
+        tex.ReadPixels(new Rect(0, 0, width, height), 0, 0);
+        tex.Apply();
+
+        //Encode the texture in JPG format
+        byte[] bytes = tex.EncodeToJPG();
+        Destroy(tex);
+
+        //Write the returned byte array to a file in desktop
+        File.WriteAllBytes(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Testi.jpg"), bytes);
+        Debug.Log($"Finished screen save to: {Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}");
+    }
+    */
 }
