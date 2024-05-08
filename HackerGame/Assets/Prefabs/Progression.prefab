@@ -490,7 +490,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1188904023499598420}
   m_HandleRect: {fileID: 3333065950550326209}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1084,7 +1084,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Progression - Notepad
+  m_text: Player Data Report - Notepad
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1272,7 +1272,6 @@ MonoBehaviour:
   displayText: {fileID: 3977802157218054813}
   playerDataHandler: {fileID: 1625064974528148877, guid: 5d928b71600a61d42bddec06b2b3dc14,
     type: 3}
-  notepad: {fileID: 6498746085843447997}
 --- !u!1 &6169734810586827257
 GameObject:
   m_ObjectHideFlags: 0
