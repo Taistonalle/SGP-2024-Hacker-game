@@ -135,6 +135,22 @@ public class PlayerDataDisplay : MonoBehaviour
         sb.AppendLine(MPTitle);
         DisplayTaskData(sb, playerData.task_MP_data, 4);
 
+        //Add Task HE data
+        sb.AppendLine(HETitle);
+        DisplayTaskData(sb, playerData.task_HE_data, 1);
+
+        //Add Task HA data
+        sb.AppendLine(HATitle);
+        DisplayTaskData(sb, playerData.task_HA_data, 2);
+
+        //Add Task HI data
+        sb.AppendLine(HITitle);
+        DisplayTaskData(sb, playerData.task_HI_data, 3);
+
+        //Add Task HP data
+        sb.AppendLine(HPTitle);
+        DisplayTaskData(sb, playerData.task_HP_data, 4);
+
         /* Old data information
         // Add basic information
         sb.AppendLine("Player Data:");
@@ -244,6 +260,39 @@ public class PlayerDataDisplay : MonoBehaviour
 
                 case 4:
                 MPData += attemptData;
+                break;
+            }
+        }
+    }
+
+    private void DisplayTaskData(StringBuilder sb, List<Hard_Task_Data> taskDataList, int dataNum) {
+        for (int i = 0; i < taskDataList.Count;i++) {
+            string attemptData = $"\nAttempt: {taskDataList[i].attempt}" +
+                                 $"\nCorrect amount: {taskDataList[i].correctAmount}";
+            
+            foreach (InputField_Data field in taskDataList[i].inputField_datas) {
+                attemptData += $"\nField name: {field.fieldName}" +
+                               $"\nDescription: {field.description}" +
+                               $"\nWhat was written: {field.whatWasWritten}" +
+                               $"\nWas correct: {field.wasCorrect}\n";
+            }
+            sb.AppendLine(attemptData);
+
+            switch (dataNum) {
+                case 1:
+                HEData += attemptData;
+                break; 
+                
+                case 2:
+                HAData += attemptData;
+                break;
+
+                case 3:
+                HIData += attemptData;
+                break;
+
+                case 4:
+                HPData += attemptData;
                 break;
             }
         }
@@ -374,7 +423,7 @@ public class PlayerDataDisplay : MonoBehaviour
 
         // Open the document for writing
         document.Open();
-
+        
         // Add content to the document
         //document.Add(new Paragraph(sb.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 18))); Old, using the whole string builder. Cant modify headers this way
         document.Add(new Paragraph(mainTitle, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 24, BaseColor.BLACK)));
@@ -393,36 +442,63 @@ public class PlayerDataDisplay : MonoBehaviour
                                    $"\nTask HP attempts: {task_HP_Attempts}" +
                                    $"\nAll attempts: {allAttempts}", FontFactory.GetFont(FontFactory.HELVETICA, 14)));
 
-        document.Add(new Paragraph(EETitle, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16, new BaseColor(30, 115, 45))));
+        //Easy datas
+        BaseColor easyFontColor = new BaseColor(30, 115, 45);
+        document.Add(new Paragraph(EETitle, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16, easyFontColor)));
         document.Add(new Paragraph(EEData, FontFactory.GetFont(FontFactory.HELVETICA, 14)));
 
-        document.Add(new Paragraph(EATitle, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16, new BaseColor(30, 115, 45))));
+        document.Add(new Paragraph(EATitle, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16, easyFontColor)));
         document.Add(new Paragraph(EAData, FontFactory.GetFont(FontFactory.HELVETICA, 14)));
 
-        document.Add(new Paragraph(EITitle, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16, new BaseColor(30, 115, 45))));
+        document.Add(new Paragraph(EITitle, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16, easyFontColor)));
         document.Add(new Paragraph(EIData, FontFactory.GetFont(FontFactory.HELVETICA, 14)));
 
-        document.Add(new Paragraph(EPTitle, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16, new BaseColor(30, 115, 45))));
+        document.Add(new Paragraph(EPTitle, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16, easyFontColor)));
         document.Add(new Paragraph(EPData, FontFactory.GetFont(FontFactory.HELVETICA, 14)));
 
-        document.Add(new Paragraph(METitle, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16, new BaseColor(110, 110, 50))));
+        //Medium datas
+        BaseColor mediumFontColor = new BaseColor(110, 110, 50);
+        document.Add(new Paragraph(METitle, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16, mediumFontColor)));
         document.Add(new Paragraph(MEData, FontFactory.GetFont(FontFactory.HELVETICA, 14)));
 
-        document.Add(new Paragraph(MATitle, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16, new BaseColor(110, 110, 50))));
+        document.Add(new Paragraph(MATitle, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16, mediumFontColor)));
         document.Add(new Paragraph(MAData, FontFactory.GetFont(FontFactory.HELVETICA, 14)));
 
-        document.Add(new Paragraph(MITitle, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16, new BaseColor(110, 110, 50))));
+        document.Add(new Paragraph(MITitle, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16, mediumFontColor)));
         document.Add(new Paragraph(MIData, FontFactory.GetFont(FontFactory.HELVETICA, 14)));
 
-        document.Add(new Paragraph(MPTitle, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16, new BaseColor(110, 110, 50))));
+        document.Add(new Paragraph(MPTitle, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16, mediumFontColor)));
         document.Add(new Paragraph(MPData, FontFactory.GetFont(FontFactory.HELVETICA, 14)));
 
-        /* Doesn't work.. yet at least.
+        //Hard datas
+        BaseColor hardFontColor = new BaseColor(160, 15, 15);
+        document.Add(new Paragraph(HETitle, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16, hardFontColor)));
+        document.Add(new Paragraph(HEData, FontFactory.GetFont(FontFactory.HELVETICA, 14)));
+
+        document.Add(new Paragraph(HATitle, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16, hardFontColor)));
+        document.Add(new Paragraph(HAData, FontFactory.GetFont(FontFactory.HELVETICA, 14)));
+
+        document.Add(new Paragraph(HITitle, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16, hardFontColor)));
+        document.Add(new Paragraph(HIData, FontFactory.GetFont(FontFactory.HELVETICA, 14)));
+
+        document.Add(new Paragraph(HPTitle, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16, hardFontColor)));
+        document.Add(new Paragraph(HPData, FontFactory.GetFont(FontFactory.HELVETICA, 14)));
+
+        /* Tried to add background colour to document various ways. Succeeded only for last and first page gave up on this idea, not mandatory.
         // Set background color for the whole document
-        Rectangle pageSize;
-        PdfContentByte canvas;
-        int totalPages = document.PageNumber;
-        List<Rectangle> pages = new List<Rectangle>();
+        PdfReader reader = new(filePath);
+        Rectangle pageSize = reader.GetPageSizeWithRotation(1);
+        reader.Close();
+        yield return new WaitForSeconds(1.5f);
+        var newWriter = PdfWriter.GetInstance(document, new FileStream(filePath, FileMode.Append));
+        newWriter.Open();
+
+        PdfContentByte canvas = newWriter.DirectContentUnder;
+        canvas.SetColorFill(new BaseColor(30, 30, 30));
+        canvas.Rectangle(pageSize.Left, pageSize.Bottom, pageSize.Width, pageSize.Height);
+        canvas.Fill();
+
+        
         for (int i = 0; i <= document.PageNumber; i++) {
             pageSize = document.PageSize;
             canvas = writer.DirectContentUnder;
