@@ -40,18 +40,18 @@ public class PlayerDataDisplay : MonoBehaviour
         //Define strings
         mainTitle = "Player data";
         userNameAndEmail = $"\nEmail: {playerDataHandler.currentPlayerData.email}\nUsername: {playerDataHandler.currentPlayerData.userName}";
-        EETitle = "\nTask EE Data:";
-        EATitle = "\nTask EA Data:";
-        EITitle = "\nTask EI Data:";
-        EPTitle = "\nTask EP Data:";
-        METitle = "\nTask ME Data:";
-        MATitle = "\nTask MA Data:";
-        MITitle = "\nTask MI Data:";
-        MPTitle = "\nTask MP Data:";
-        HETitle = "\nTask HE Data:";
-        HATitle = "\nTask HA Data:";
-        HITitle = "\nTask HI Data:";
-        HPTitle = "\nTask HP Data:";
+        EETitle = "\nTask Easy Encapsulation Data:";
+        EATitle = "\nTask Easy Abstraction Data:";
+        EITitle = "\nTask Easy Inheritance Data:";
+        EPTitle = "\nTask Easy Polymorphism Data:";
+        METitle = "\nTask Medium Encapsulation Data:";
+        MATitle = "\nTask Medium Abstraction Data:";
+        MITitle = "\nTask Medium Inheritance Data:";
+        MPTitle = "\nTask Medium Polymorphism Data:";
+        HETitle = "\nTask Hard Encapsulation Data:";
+        HATitle = "\nTask Hard Abstraction Data:";
+        HITitle = "\nTask Hard Inheritance Data:";
+        HPTitle = "\nTask Hard Polymorphism Data:";
 
         //Define attempts
         task_EE_Attempts = playerDataHandler.currentPlayerData.task_EE_data.Count;
@@ -89,18 +89,18 @@ public class PlayerDataDisplay : MonoBehaviour
         //Add player information
         sb.AppendLine(mainTitle);
         sb.AppendLine(userNameAndEmail);
-        sb.AppendLine($"Task EE attempts: {task_EE_Attempts}");
-        sb.AppendLine($"Task EA attempts: {task_EA_Attempts}");
-        sb.AppendLine($"Task EI attempts: {task_EI_Attempts}");
-        sb.AppendLine($"Task EP attempts: {task_EP_Attempts}");
-        sb.AppendLine($"Task ME attempts: {task_ME_Attempts}");
-        sb.AppendLine($"Task MA attempts: {task_MA_Attempts}");
-        sb.AppendLine($"Task MI attempts: {task_MI_Attempts}");
-        sb.AppendLine($"Task MP attempts: {task_MP_Attempts}");
-        sb.AppendLine($"Task HE attempts: {task_HE_Attempts}");
-        sb.AppendLine($"Task HA attempts: {task_HA_Attempts}");
-        sb.AppendLine($"Task HI attempts: {task_HI_Attempts}");
-        sb.AppendLine($"Task HP attempts: {task_HP_Attempts}");
+        sb.AppendLine($"Task Easy Encapsulation attempts: {task_EE_Attempts}");
+        sb.AppendLine($"Task Easy Abstraction attempts: {task_EA_Attempts}");
+        sb.AppendLine($"Task Easy Inheritance attempts: {task_EI_Attempts}");
+        sb.AppendLine($"Task Easy Polymorphism attempts: {task_EP_Attempts}");
+        sb.AppendLine($"Task Medium Encapsulation attempts: {task_ME_Attempts}");
+        sb.AppendLine($"Task Medium Abstraction attempts: {task_MA_Attempts}");
+        sb.AppendLine($"Task Medium Inheritance attempts: {task_MI_Attempts}");
+        sb.AppendLine($"Task Medium Polymorphism attempts: {task_MP_Attempts}");
+        sb.AppendLine($"Task Hard Encapsulation attempts: {task_HE_Attempts}");
+        sb.AppendLine($"Task Hard Abstraction attempts: {task_HA_Attempts}");
+        sb.AppendLine($"Task Hard Inheritance attempts: {task_HI_Attempts}");
+        sb.AppendLine($"Task Hard Polymorphism attempts: {task_HP_Attempts}");
         sb.AppendLine($"All attempts: {allAttempts}");
 
         //Add Task EE data
@@ -428,18 +428,18 @@ public class PlayerDataDisplay : MonoBehaviour
         //document.Add(new Paragraph(sb.ToString(), FontFactory.GetFont(FontFactory.HELVETICA, 18))); Old, using the whole string builder. Cant modify headers this way
         document.Add(new Paragraph(mainTitle, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 24, BaseColor.BLACK)));
         document.Add(new Paragraph(userNameAndEmail, FontFactory.GetFont(FontFactory.HELVETICA, 14)));
-        document.Add(new Paragraph($"Task EE attempts: {task_EE_Attempts}" +
-                                   $"\nTask EA attempts: {task_EA_Attempts}" +
-                                   $"\nTask EI attempts: {task_EI_Attempts}" +
-                                   $"\nTask EP attempts: {task_EP_Attempts}" +
-                                   $"\nTask ME attempts: {task_ME_Attempts}" +
-                                   $"\nTask MA attempts: {task_MA_Attempts}" +
-                                   $"\nTask MI attempts: {task_MI_Attempts}" +
-                                   $"\nTask MP attempts: {task_MP_Attempts}" +
-                                   $"\nTask HE attempts: {task_HE_Attempts}" +
-                                   $"\nTask HA attempts: {task_HA_Attempts}" +
-                                   $"\nTask HI attempts: {task_HI_Attempts}" +
-                                   $"\nTask HP attempts: {task_HP_Attempts}" +
+        document.Add(new Paragraph($"Task Easy Encapsulation attempts: {task_EE_Attempts}" +
+                                   $"\nTask Easy Abstraction attempts: {task_EA_Attempts}" +
+                                   $"\nTask Easy Inheritance attempts: {task_EI_Attempts}" +
+                                   $"\nTask Easy Polymorphism attempts: {task_EP_Attempts}" +
+                                   $"\nTask Medium Encapsulation attempts: {task_ME_Attempts}" +
+                                   $"\nTask Medium Abstraction attempts: {task_MA_Attempts}" +
+                                   $"\nTask Medium Inheritance attempts: {task_MI_Attempts}" +
+                                   $"\nTask Medium Polymorphism attempts: {task_MP_Attempts}" +
+                                   $"\nTask Hard Encapsulation attempts: {task_HE_Attempts}" +
+                                   $"\nTask Hard Abstraction attempts: {task_HA_Attempts}" +
+                                   $"\nTask Hard Inheritance attempts: {task_HI_Attempts}" +
+                                   $"\nTask Hard Polymorphism attempts: {task_HP_Attempts}" +
                                    $"\nAll attempts: {allAttempts}", FontFactory.GetFont(FontFactory.HELVETICA, 14)));
 
         //Easy datas
