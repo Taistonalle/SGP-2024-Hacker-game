@@ -139,6 +139,8 @@ public class Task_EE : MonoBehaviour {
     protected virtual IEnumerator TerminalMessage(string message, bool correct) {
         //Store old message
         string oldMessage = terminalTxt.text;
+        //Get handler
+        PlayerDataHandler handler = FindAnyObjectByType<PlayerDataHandler>();
 
         switch (correct) {
             case true:
@@ -149,7 +151,7 @@ public class Task_EE : MonoBehaviour {
             foreach (GameObject block in blocks) block.SetActive(false);
             yield return new WaitForSeconds(messageTimeOnTerminal);
             UpdateTaskData(true);
-            FindObjectOfType<PlayerDataHandler>().LocalSaveData(); //Placeholder
+            handler.SaveData(handler.currentPlayerData.userName);
             gameManager.soundManager.PlayOneShot(2, true);
             Destroy(gameObject);
             break;
@@ -162,7 +164,7 @@ public class Task_EE : MonoBehaviour {
             foreach (GameObject slot in slots) slot.SetActive(true);
             UpdateTaskData(false);
             ResetAttemptData();
-            FindObjectOfType<PlayerDataHandler>().LocalSaveData(); //Placeholder
+            handler.SaveData(handler.currentPlayerData.userName);
             break;
         }
     }

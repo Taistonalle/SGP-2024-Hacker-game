@@ -77,7 +77,7 @@ public class PlayerDataHandler : MonoBehaviour {
 
     private void Awake() {
         try {
-            LoadData(); //Placeholder
+            //LoadData(); //Placeholder
         } catch {
             Debug.Log("No JSON data yet. Continuing as normal");
         }
@@ -135,16 +135,15 @@ public class PlayerDataHandler : MonoBehaviour {
         if (getReq.result == UnityWebRequest.Result.Success) { //Address found by username
             Debug.Log("Username found");
 
-            //From CouchDB read the whole document and turn it into string
+            //From CouchDB load the data
             string json = getReq.downloadHandler.text;
             PlayerData jsonData = JsonUtility.FromJson<PlayerData>(json);
 
             if (jsonData.email == email) {
                 Debug.Log("Email matches with current user data. Continuing");
-                currentPlayerData.userName = username; //Save username to PlayerData
-                currentPlayerData.email = email; //Save email to PlayerData
-                //Missing load
-                //SceneManager.LoadScene("Teemu K");
+                //Set jsonData to PlayerData
+                currentPlayerData = jsonData;
+                SceneManager.LoadScene("Teemu K");
             }
             else Debug.Log("Email is not correct for the username!");
         }
@@ -164,13 +163,13 @@ public class PlayerDataHandler : MonoBehaviour {
         // Read the file content.
         string fileContent = File.ReadAllText(path);
 
-        StartCoroutine(SendDataToServer(fileContent));
+        StartCoroutine(SendDataToServer(fileContent, username));
     }
-    public IEnumerator SendDataToServer(string fileContent) {
+    public IEnumerator SendDataToServer(string fileContent, string username) {
         // Parse the file content back into a PlayerData object.
         PlayerData playerData = JsonUtility.FromJson<PlayerData>(fileContent);
 
-        string username = Username_Inputfield.text;
+        //string username = Username_Inputfield.text; Commented this, because it's missing after scene is changed
 
         // The URL should include the document ID/Player at the end.
         string url = $"http://admin:hackergame2024!@44.211.154.174:5984/playerdata/{username}"; //Note to everyone: make sure the password is not pushed to git! 

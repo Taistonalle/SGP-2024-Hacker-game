@@ -222,6 +222,8 @@ public class QuestionSetup_MI : MonoBehaviour
         //Store old text fields
         string oldQuestinHeader = terminalQuestionHeader.text;
         string oldQuestionTxt = terminalQuestionTxt.text;
+        //Get handler
+        PlayerDataHandler handler = FindAnyObjectByType<PlayerDataHandler>();
 
         switch (correct) {
             case true:
@@ -232,7 +234,7 @@ public class QuestionSetup_MI : MonoBehaviour
             yield return new WaitForSeconds(messageTimeOnTerminal);
             gameManager.soundManager.PlayOneShot(2, true);
             UpdateTaskData(true);
-            FindObjectOfType<PlayerDataHandler>().LocalSaveData(); //Placeholder
+            handler.SaveData(handler.currentPlayerData.userName);
             Destroy(gameObject);
             break;
 
@@ -246,7 +248,7 @@ public class QuestionSetup_MI : MonoBehaviour
             terminalQuestionTxt.text = oldQuestionTxt;
             UpdateTaskData(false);
             ResetAttemptData();
-            FindObjectOfType<PlayerDataHandler>().LocalSaveData(); //Placeholder
+            handler.SaveData(handler.currentPlayerData.userName);
             foreach (GameObject objekti in objectsToHide) objekti.SetActive(true);
             break;
         }

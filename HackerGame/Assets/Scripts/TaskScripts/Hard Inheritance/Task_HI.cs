@@ -259,6 +259,8 @@ public class Task_HI : MonoBehaviour {
     protected virtual IEnumerator TerminalMessage(string message, bool correct) {
         //Store old message
         string oldMessage = terminalTxt.text;
+        //Get handler
+        PlayerDataHandler handler = FindAnyObjectByType<PlayerDataHandler>();
 
         switch (correct) {
             case true:
@@ -268,7 +270,7 @@ public class Task_HI : MonoBehaviour {
             foreach (TMP_InputField field in inputFields) field.gameObject.SetActive(false);
             yield return new WaitForSeconds(messageTimeOnTerminal);
             UpdateTaskData(true);
-            FindObjectOfType<PlayerDataHandler>().LocalSaveData(); //Placeholder
+            handler.SaveData(handler.currentPlayerData.userName);
             Destroy(gameObject);
             break;
 
@@ -281,7 +283,7 @@ public class Task_HI : MonoBehaviour {
             UpdateTaskData(false);
             ResetAttemptData();
             CheckIfHintButtonShouldBeShown(3);
-            FindObjectOfType<PlayerDataHandler>().LocalSaveData(); //Placeholder
+            handler.SaveData(handler.currentPlayerData.userName);
             break;
         }
     }
