@@ -88,7 +88,11 @@ public class PlayerDataHandler : MonoBehaviour {
      public TMP_InputField Username_Inputfield;
      public TMP_InputField Email_Inputfield;
 
-        public void CheckUsername()
+    [Header("Register fields")]
+    [SerializeField] TMP_InputField reqUsername_Inputfield;
+    [SerializeField] TMP_InputField reqEmail_Inputfield;
+
+    public void CheckUsername()
     {
         StartCoroutine(CheckUsernameCoroutine());
     }
@@ -210,6 +214,46 @@ public class PlayerDataHandler : MonoBehaviour {
         } else {
             Debug.Log("Data uploaded successfully");
         }
+    }
+
+    public void RegisterNewUser() {
+        StartCoroutine(RegisterNewUserRoutine(reqUsername_Inputfield.text, reqEmail_Inputfield.text));
+    }
+
+    private IEnumerator RegisterNewUserRoutine(string userName, string email) {
+        string baseUrl = $"http://admin:hackergame2024!@44.211.154.174:5984";
+        string newDocUrl = $"{baseUrl}/playerdata/{userName}";
+
+        //Create a new empty json for database document with username and email filled
+        PlayerData newData = new();
+        newData.userName = userName;
+        newData.email = email;
+
+        //Store the username and email to current data
+        currentPlayerData = newData;
+
+        //Create new empty document in the database
+        UnityWebRequest request = UnityWebRequest.Put(newDocUrl, "{}");
+        
+        request.SetRequestHeader("Content-Type", "application/json");
+
+        yield return request.SendWebRequest();
+
+        if (request.result != UnityWebRequest.Result.Success) {
+            Debug.Log($"Error creating a new user document: {request.error}\nResponse code: {request.responseCode}");
+            request.Dispose();
+            currentPlayerData = new();
+            yield break; //Get out the routine if error happens, for example username already exists
+        } 
+        else Debug.Log($"{userName} document created succesfully!");
+       
+        request.Dispose();
+
+        //This is a workaround solution for saving the registered data.
+        SaveData(userName);
+
+        //Empty the currentPlayerdata field after
+        currentPlayerData = new();
     }
 
     // MYSQL DATABASE CONNECTION -Teemu H
