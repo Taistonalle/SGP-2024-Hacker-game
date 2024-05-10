@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Testing Scenes/Teemu K.unity
+    path: Assets/Scenes/Testing Scenes/Teemu K/Teemu K.unity
     guid: 316fd9a17b1b86742aaeb0e9454483a0
   - enabled: 1
     path: Assets/Scenes/Testing Scenes/Teemu H/Teemu H Login CouchDB.unity

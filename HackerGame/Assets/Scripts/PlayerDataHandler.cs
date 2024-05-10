@@ -84,7 +84,7 @@ public class PlayerDataHandler : MonoBehaviour {
     }
 
     // Login things for usernamecheck - Teemu h
-
+    [Header("Login things for usernamecheck")]
      public TMP_InputField Username_Inputfield;
      public TMP_InputField Email_Inputfield;
 
@@ -92,6 +92,11 @@ public class PlayerDataHandler : MonoBehaviour {
     {
         StartCoroutine(CheckUsernameCoroutine());
     }
+
+    public void CheckUserData() {
+        StartCoroutine(CheckUserDataRoutine());
+    }
+
     private IEnumerator CheckUsernameCoroutine()
     {
         string username = Username_Inputfield.text;
@@ -110,15 +115,49 @@ public class PlayerDataHandler : MonoBehaviour {
             Debug.Log("Username exists");
             currentPlayerData.userName = username; // Save username to PlayerData
             currentPlayerData.email = email; // Save email to PlayerData
-            SaveData(); // Save PlayerData
+            SaveData(username); // Save PlayerData
             SceneManager.LoadScene("Teemu H Progression"); // Load new scene
         }
     }
 
+    //----User checking Teemu K Edition----
+    private IEnumerator CheckUserDataRoutine() {
+        string username = Username_Inputfield.text;
+        string email = Email_Inputfield.text;
+        string url = $"http://admin:hackergame2024!@44.211.154.174:5984/playerdata/{username}";
+
+        UnityWebRequest getReq = UnityWebRequest.Get(url);
+        yield return getReq.SendWebRequest();
+
+        //First check that Username_Inputfield.text is not empty or null and stop the routine if it is
+        if (Username_Inputfield.text == "") yield break;
+
+        if (getReq.result == UnityWebRequest.Result.Success) { //Address found by username
+            Debug.Log("Username found");
+
+            //From CouchDB read the whole document and turn it into string
+            string json = getReq.downloadHandler.text;
+            PlayerData jsonData = JsonUtility.FromJson<PlayerData>(json);
+
+            if (jsonData.email == email) {
+                Debug.Log("Email matches with current user data. Continuing");
+                currentPlayerData.userName = username; //Save username to PlayerData
+                currentPlayerData.email = email; //Save email to PlayerData
+                //Missing load
+                //SceneManager.LoadScene("Teemu K");
+            }
+            else Debug.Log("Email is not correct for the username!");
+        }
+
+        else if (getReq.result != UnityWebRequest.Result.Success) Debug.Log(getReq.error);
+        getReq.Dispose();
+    }
+    //---End of checking----
+
     //Save data to the json file and send it to the server
-    public void SaveData() {
+    public void SaveData(string username) {
         string json = JsonUtility.ToJson(currentPlayerData, true);
-        string path = Path.Combine(Application.persistentDataPath, "currentPlayerData.json");
+        string path = Path.Combine(Application.persistentDataPath, $"currentPlayerData_{username}.json");
 
         File.WriteAllText(path, json);
 
