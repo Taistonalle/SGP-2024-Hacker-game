@@ -124,6 +124,7 @@ public class Task_HA : Task_HI {
             handler.currentPlayerData.task_HA_data.Add(currentData);
             handler.currentPlayerData.correctAttemptAmount_HA++;
             gameManager.EnableCheckMark(9);
+            StartCoroutine(gameManager.CheckIfHardsDone());
             break;
 
             case false:

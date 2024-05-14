@@ -22,6 +22,7 @@ public class PlayerDataHandler : MonoBehaviour {
         [Header("User data")]
         public string email;
         public string userName;
+        public bool unlockedAll;
 
         [Header("Easy Encapsulation data")]
         public List<Easy_Task_Data> task_EE_data = new();

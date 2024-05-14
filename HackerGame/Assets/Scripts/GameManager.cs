@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using System.IO;
 using System;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
+using UnityEngine.Video;
 
 public class GameManager : MonoBehaviour {
     /*
@@ -40,6 +42,8 @@ public class GameManager : MonoBehaviour {
 
     public SoundManager soundManager;
     [SerializeField] GameObject volumeSlider;
+    [SerializeField] VideoPlayer animationPlayer;
+    [SerializeField] GameObject screen;
 
     void Start() {
         CheckProgress();
@@ -158,6 +162,26 @@ public class GameManager : MonoBehaviour {
         hackedImage[folderIndex].material = null;
     }
    
+    public IEnumerator CheckIfHardsDone() {
+        var handler = FindObjectOfType<PlayerDataHandler>().currentPlayerData;
+        bool allDone = handler.correctAttemptAmount_HE > 0 && handler.correctAttemptAmount_HA > 0 && handler.correctAttemptAmount_HI > 0 && handler.correctAttemptAmount_HP > 0;
+
+        if (allDone && !handler.unlockedAll) { //Further check if animation should be played
+            float animLength = (float)animationPlayer.length;
+            handler.unlockedAll = true;
+            animationPlayer.Prepare();
+            screen.SetActive(false);
+            animationPlayer.Play();
+            yield return StartCoroutine(WorkAroundTimer(animLength));
+        }
+    }
+
+    IEnumerator WorkAroundTimer(float time) {
+        yield return new WaitForSeconds(time);
+        screen.SetActive(true);
+        Destroy(animationPlayer.gameObject);
+    }
+
     IEnumerator ChangeSceneWithDelay() {
         AudioSource sm = soundManager.GetComponent<AudioSource>();
         yield return new WaitUntil(() => sm.isPlaying == false); //Waits until sound is fully played

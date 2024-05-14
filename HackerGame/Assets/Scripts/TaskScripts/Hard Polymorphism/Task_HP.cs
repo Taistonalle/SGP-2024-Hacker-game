@@ -142,6 +142,7 @@ public class Task_HP : Task_HI
                 handler.currentPlayerData.task_HP_data.Add(currentData);
                 handler.currentPlayerData.correctAttemptAmount_HP++;
                 gameManager.EnableCheckMark(11);
+                StartCoroutine(gameManager.CheckIfHardsDone());
             break;
 
             case false:

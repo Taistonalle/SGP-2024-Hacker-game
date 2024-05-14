@@ -99,6 +99,7 @@ public class Task_HE : Task_HI {
             handler.currentPlayerData.task_HE_data.Add(currentData);
             handler.currentPlayerData.correctAttemptAmount_HE++;
             gameManager.EnableCheckMark(8);
+            StartCoroutine(gameManager.CheckIfHardsDone());
             break;
 
             case false:

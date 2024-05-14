@@ -229,6 +229,7 @@ public class Task_HI : MonoBehaviour {
             handler.currentPlayerData.task_HI_data.Add(currentData);
             handler.currentPlayerData.correctAttemptAmount_HI++;
             gameManager.EnableCheckMark(10);
+            StartCoroutine(gameManager.CheckIfHardsDone());
             break;
 
             case false:
