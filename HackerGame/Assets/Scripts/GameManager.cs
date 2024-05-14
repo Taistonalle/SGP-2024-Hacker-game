@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using System;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     /*
@@ -57,9 +58,9 @@ public class GameManager : MonoBehaviour {
     }
 
     public void ScreenPowerButton() {
-        Debug.Log("Implement returning back to login screen?");
         soundManager.PlayOneShot(4, false);
-        Application.Quit(); //For now just quit
+        Destroy(FindObjectOfType<PlayerDataHandler>().gameObject); //Destroy "old" handler so login screen doesn't get confused.
+        StartCoroutine(ChangeSceneWithDelay());
     }
 
     public void EnableCheckMark(int markIndex) { //Index is seen from the inspector array. Semi hard coded like this, it is what it is.
@@ -128,6 +129,12 @@ public class GameManager : MonoBehaviour {
         hackedImage[folderIndex].material = null;
     }
    
+    IEnumerator ChangeSceneWithDelay() {
+        AudioSource sm = soundManager.GetComponent<AudioSource>();
+        yield return new WaitUntil(() => sm.isPlaying == false); //Waits until sound is fully played
+        SceneManager.LoadScene(1);
+    }
+
     /*
     //Test screenshot save
     IEnumerator ScreenSaveTest() {

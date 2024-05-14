@@ -133,8 +133,11 @@ public class PlayerDataHandler : MonoBehaviour {
         UnityWebRequest getReq = UnityWebRequest.Get(url);
         yield return getReq.SendWebRequest();
 
-        //First check that Username_Inputfield.text is not empty or null and stop the routine if it is
-        if (Username_Inputfield.text == "") yield break;
+        //First check that Inputfields are not empty or null and stop the routine if it is
+        if (Username_Inputfield.text == "" || Email_Inputfield.text == "") {
+            StartCoroutine(FindObjectOfType<LoginMenuHandler_PH>().NotificationMessage("Both fields need to be filled", true));
+            yield break;
+        }
 
         if (getReq.result == UnityWebRequest.Result.Success) { //Address found by username
             Debug.Log("Username found");
@@ -147,12 +150,16 @@ public class PlayerDataHandler : MonoBehaviour {
                 Debug.Log("Email matches with current user data. Continuing");
                 //Set jsonData to PlayerData
                 currentPlayerData = jsonData;
-                SceneManager.LoadScene("Teemu K");
+                StartCoroutine(FindObjectOfType<LoginMenuHandler_PH>().LoadSceneAfterAnimation());
             }
-            else Debug.Log("Email is not correct for the username!");
+            else {
+                Debug.Log("Email is not correct for the username!");
+                StartCoroutine(FindObjectOfType<LoginMenuHandler_PH>().NotificationMessage("Email is not correct for username", true));
+            }
+        } 
+        else if (getReq.result != UnityWebRequest.Result.Success) {
+            StartCoroutine(FindObjectOfType<LoginMenuHandler_PH>().NotificationMessage($"Username not found", true));
         }
-
-        else if (getReq.result != UnityWebRequest.Result.Success) Debug.Log(getReq.error);
         getReq.Dispose();
     }
     //---End of checking----
@@ -224,6 +231,12 @@ public class PlayerDataHandler : MonoBehaviour {
         string baseUrl = $"http://admin:hackergame2024!@44.211.154.174:5984";
         string newDocUrl = $"{baseUrl}/playerdata/{userName}";
 
+        //Check that fields are not empty, if they are stop routine
+        if (reqUsername_Inputfield.text == "" || reqEmail_Inputfield.text == "") {
+            StartCoroutine(FindObjectOfType<LoginMenuHandler_PH>().NotificationMessage($"Both fields need to be filled", true));
+            yield break;
+        }
+
         //Create a new empty json for database document with username and email filled
         PlayerData newData = new();
         newData.userName = userName;
@@ -240,12 +253,16 @@ public class PlayerDataHandler : MonoBehaviour {
         yield return request.SendWebRequest();
 
         if (request.result != UnityWebRequest.Result.Success) {
-            Debug.Log($"Error creating a new user document: {request.error}\nResponse code: {request.responseCode}");
+            Debug.Log($"Error creating a new user document: {request.error}");
+            StartCoroutine(FindObjectOfType<LoginMenuHandler_PH>().NotificationMessage($"{userName} already exists!", true));
             request.Dispose();
             currentPlayerData = new();
             yield break; //Get out the routine if error happens, for example username already exists
-        } 
-        else Debug.Log($"{userName} document created succesfully!");
+        }
+        else {
+            Debug.Log($"{userName} document created succesfully!");
+            StartCoroutine(FindObjectOfType<LoginMenuHandler_PH>().NotificationMessage($"{userName} registered succesfully!", false));
+        }
        
         request.Dispose();
 

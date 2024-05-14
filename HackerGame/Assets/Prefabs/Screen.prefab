@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 8213841780378339410}
   - component: {fileID: 8039021325621254252}
   m_Layer: 0
-  m_Name: Icon_Progression
+  m_Name: Icon_PlayerDataReport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -246,7 +246,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -271.8802, y: -36.3}
+  m_AnchoredPosition: {x: -268.71, y: -38.5}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2214994298788105176
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b4817f51af0f74d428cd06816794974f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c99e1f0a7ee79d24683989f8754ee294, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -970,7 +970,7 @@ GameObject:
   - component: {fileID: 926440853563642018}
   - component: {fileID: 6468167088591793875}
   m_Layer: 0
-  m_Name: Icon_Progression_txt
+  m_Name: Icon_PlayerDataReport_txt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
