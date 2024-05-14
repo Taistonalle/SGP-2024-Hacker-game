@@ -9,10 +9,15 @@ public class LoginMenuHandler_PH : MonoBehaviour {
     [SerializeField] GameObject screen;
     [SerializeField] GameObject notificationBox;
     [SerializeField] VideoPlayer animationPlayer;
+    [SerializeField] VideoClip startingAnimation, loopingAnimation, animAfterLogin;
     [SerializeField] GameObject skipButton;
     [SerializeField] TextMeshProUGUI notificationHeaderTxt;
     [SerializeField] TextMeshProUGUI notificationTxt;
     [SerializeField] float notificationOnScreenTime;
+
+    private void Start() {
+        StartCoroutine(GameStartAnimation());
+    }
 
     public void CloseGame() {
         Application.Quit();
@@ -41,17 +46,31 @@ public class LoginMenuHandler_PH : MonoBehaviour {
     }
 
     public IEnumerator LoadSceneAfterAnimation() {
-        float animLenght = (float)animationPlayer.length;
+        //float animLenght = (float)animationPlayer.length;
+        animationPlayer.clip = animAfterLogin;
         animationPlayer.Prepare();
         skipButton.SetActive(true);
         screen.SetActive(false);
         animationPlayer.Play();
-        yield return new WaitForSeconds(animLenght); //Play animation first and then change scene
+        yield return new WaitUntil(() => (float)animationPlayer.frame >= animationPlayer.frameCount - 1); //Play animation first and then change scene
         SceneManager.LoadScene(1);
     }
 
+    IEnumerator GameStartAnimation() {
+        //float animLenght = (float)animationPlayer.length;
+        animationPlayer.Prepare();
+        screen.SetActive(false);
+        animationPlayer.Play();
+        yield return new WaitUntil(() => (float)animationPlayer.frame >= animationPlayer.frameCount - 1); // -1 ensures that animation actually stops
+        screen.SetActive(true);
+        animationPlayer.clip = loopingAnimation;
+        animationPlayer.isLooping = true;
+        animationPlayer.Prepare();
+        animationPlayer.Play();
+    }
+
     public void SkipAnimation() {
-        StopAllCoroutines();
+        StopCoroutine(LoadSceneAfterAnimation());
         SceneManager.LoadScene(1);
     }
 }

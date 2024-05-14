@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] Image[] hackedImage;
 
     public SoundManager soundManager;
+    [SerializeField] GameObject volumeSlider;
 
     void Start() {
         CheckProgress();
@@ -61,6 +62,34 @@ public class GameManager : MonoBehaviour {
         soundManager.PlayOneShot(4, false);
         Destroy(FindObjectOfType<PlayerDataHandler>().gameObject); //Destroy "old" handler so login screen doesn't get confused.
         StartCoroutine(ChangeSceneWithDelay());
+    }
+
+    public void VolumeButton() {
+        switch (volumeSlider.activeSelf) {
+            case false:
+            volumeSlider.SetActive(true);
+            break;
+
+            case true:
+            volumeSlider.SetActive(false);
+            break;
+        }
+        /*
+        AudioSource gm = GetComponent<AudioSource>();
+        AudioSource sm = soundManager.GetComponent<AudioSource>();
+
+        switch (sm.mute) {
+            case true:
+            sm.mute = false;
+            gm.mute = false;
+            break;
+
+            case false:
+            sm.mute = true;
+            gm.mute = true;
+            break;
+        }
+        */
     }
 
     public void EnableCheckMark(int markIndex) { //Index is seen from the inspector array. Semi hard coded like this, it is what it is.
