@@ -47,11 +47,11 @@ public class LoginMenuHandler_PH : MonoBehaviour {
         screen.SetActive(false);
         animationPlayer.Play();
         yield return new WaitForSeconds(animLenght); //Play animation first and then change scene
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void SkipAnimation() {
         StopAllCoroutines();
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }

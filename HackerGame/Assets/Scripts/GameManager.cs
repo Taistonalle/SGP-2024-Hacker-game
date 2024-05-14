@@ -132,7 +132,7 @@ public class GameManager : MonoBehaviour {
     IEnumerator ChangeSceneWithDelay() {
         AudioSource sm = soundManager.GetComponent<AudioSource>();
         yield return new WaitUntil(() => sm.isPlaying == false); //Waits until sound is fully played
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
     /*
