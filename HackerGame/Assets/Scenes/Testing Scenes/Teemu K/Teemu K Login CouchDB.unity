@@ -756,7 +756,7 @@ MonoBehaviour:
   animationPlayer: {fileID: 1134716975}
   startingAnimation: {fileID: 32900000, guid: f4c33fc2d91cb334ba15c01fc6c7f346, type: 3}
   loopingAnimation: {fileID: 32900000, guid: 3dbf820189921974db9c468f7fce484b, type: 3}
-  animAfterLogin: {fileID: 32900000, guid: 57923f7884f7dfa489873bfc254da104, type: 3}
+  animAfterLogin: {fileID: 32900000, guid: 10da73f4429be5349be33823d09f78e1, type: 3}
   skipButton: {fileID: 1481596677}
   notificationHeaderTxt: {fileID: 51890407}
   notificationTxt: {fileID: 958322273}
